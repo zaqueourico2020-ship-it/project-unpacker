@@ -407,8 +407,8 @@ function App() {
 
   /* Load local-only state (cart, orders) + Supabase user */
   useEffect(() => {
-    setCart(load<CartItem[]>(LS.cart, []));
-    setOrders(load<Order[]>(LS.orders, []));
+    if (cachedCart === null) setCart(load<CartItem[]>(LS.cart, []));
+    if (cachedOrders === null) setOrders(load<Order[]>(LS.orders, []));
 
     const applyAuthUser = (authUser: any | null) => {
       if (!authUser) {
@@ -499,10 +499,16 @@ function App() {
 
   }, []);
 
-  /* Persist local-only state */
-  useEffect(() => { if (ready) save(LS.cart, cart); }, [cart, ready]);
-  useEffect(() => { if (ready) save(LS.orders, orders); }, [orders, ready]);
-  useEffect(() => { if (ready && user) save(LS.user, user); }, [user, ready]);
+  /* Persist local-only state and mirror to module cache so Back-navigation
+     remounts of the home route show data immediately instead of flashing
+     empty UI. */
+  useEffect(() => { cachedCart = cart; if (ready) save(LS.cart, cart); }, [cart, ready]);
+  useEffect(() => { cachedOrders = orders; if (ready) save(LS.orders, orders); }, [orders, ready]);
+  useEffect(() => { cachedUser = user; if (ready && user) save(LS.user, user); }, [user, ready]);
+  useEffect(() => { cachedUserId = userId; }, [userId]);
+  useEffect(() => { cachedUserType = userType; }, [userType]);
+  useEffect(() => { cachedTab = tab; }, [tab]);
+  useEffect(() => { cachedActiveCategory = activeCategory; }, [activeCategory]);
 
   const showToast = (msg: string) => {
     setToast(msg);
