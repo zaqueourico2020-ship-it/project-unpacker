@@ -142,9 +142,16 @@ const seedBanners: Banner[] = [
   { id: "gf-boas-vindas", title: "Bem-vindo ao Grupo GF", subtitle: "Qualidade, economia e confiança", image: bannerBoasVindas.url },
 ];
 
-// Module-level cache so navigating away and pressing Back doesn't blank out
-// the product grid while the DB reloads.
+// Module-level caches so navigating away and pressing the browser Back
+// button doesn't blank out the home screen while async loaders re-run.
 let cachedDbProducts: Product[] = [];
+let cachedUser: UserData | null = null;
+let cachedUserId: string | null = null;
+let cachedUserType: "lojista" | "pessoa_fisica" | null = null;
+let cachedTab: Tab = "home";
+let cachedCart: CartItem[] | null = null;
+let cachedOrders: Order[] | null = null;
+let cachedActiveCategory: string = "Todas";
 const seedCoupons: Coupon[] = [
   { code: "BEMVINDO10", discount: 10, type: "percent" },
   { code: "GF20", discount: 20, type: "fixed" },
@@ -176,10 +183,10 @@ type Tab = "home" | "categories" | "cart" | "orders" | "profile" | "faq" | "admi
 
 function App() {
   const [ready, setReady] = useState(false);
-  const [user, setUser] = useState<UserData | null>(null);
-  const [userId, setUserId] = useState<string | null>(null);
-  const [userType, setUserType] = useState<"lojista" | "pessoa_fisica" | null>(null);
-  const [tab, setTab] = useState<Tab>("home");
+  const [user, setUser] = useState<UserData | null>(() => cachedUser);
+  const [userId, setUserId] = useState<string | null>(() => cachedUserId);
+  const [userType, setUserType] = useState<"lojista" | "pessoa_fisica" | null>(() => cachedUserType);
+  const [tab, setTab] = useState<Tab>(() => cachedTab);
 
   const [drawerOpen, setDrawerOpen] = useState(false);
   /* Shared store state (products/banners/coupons/settings) lives in the DB so
@@ -279,10 +286,10 @@ function App() {
     mutateStore({ settings: v });
   };
 
-  const [cart, setCart] = useState<CartItem[]>([]);
-  const [orders, setOrders] = useState<Order[]>([]);
+  const [cart, setCart] = useState<CartItem[]>(() => cachedCart ?? []);
+  const [orders, setOrders] = useState<Order[]>(() => cachedOrders ?? []);
   const [search, setSearch] = useState("");
-  const [activeCategory, setActiveCategory] = useState<string>("Todas");
+  const [activeCategory, setActiveCategory] = useState<string>(() => cachedActiveCategory);
   const [sortBy, setSortBy] = useState<"relevance" | "price-asc" | "price-desc" | "discount" | "name">("relevance");
   const [maxPrice, setMaxPrice] = useState<number>(0); // 0 = no limit
   const [showFilters, setShowFilters] = useState(false);
@@ -400,8 +407,8 @@ function App() {
 
   /* Load local-only state (cart, orders) + Supabase user */
   useEffect(() => {
-    setCart(load<CartItem[]>(LS.cart, []));
-    setOrders(load<Order[]>(LS.orders, []));
+    if (cachedCart === null) setCart(load<CartItem[]>(LS.cart, []));
+    if (cachedOrders === null) setOrders(load<Order[]>(LS.orders, []));
 
     const applyAuthUser = (authUser: any | null) => {
       if (!authUser) {
@@ -492,10 +499,16 @@ function App() {
 
   }, []);
 
-  /* Persist local-only state */
-  useEffect(() => { if (ready) save(LS.cart, cart); }, [cart, ready]);
-  useEffect(() => { if (ready) save(LS.orders, orders); }, [orders, ready]);
-  useEffect(() => { if (ready && user) save(LS.user, user); }, [user, ready]);
+  /* Persist local-only state and mirror to module cache so Back-navigation
+     remounts of the home route show data immediately instead of flashing
+     empty UI. */
+  useEffect(() => { cachedCart = cart; if (ready) save(LS.cart, cart); }, [cart, ready]);
+  useEffect(() => { cachedOrders = orders; if (ready) save(LS.orders, orders); }, [orders, ready]);
+  useEffect(() => { cachedUser = user; if (ready && user) save(LS.user, user); }, [user, ready]);
+  useEffect(() => { cachedUserId = userId; }, [userId]);
+  useEffect(() => { cachedUserType = userType; }, [userType]);
+  useEffect(() => { cachedTab = tab; }, [tab]);
+  useEffect(() => { cachedActiveCategory = activeCategory; }, [activeCategory]);
 
   const showToast = (msg: string) => {
     setToast(msg);
