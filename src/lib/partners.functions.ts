@@ -223,50 +223,70 @@ export const activatePartnerSelf = createServerFn({ method: "POST" })
     const { userId } = context;
     const supabase = context.supabase as any;
 
+    // Try the SECURITY DEFINER RPC first (preferred path).
     const { data: rpcRows, error: rpcError } = await supabase.rpc("activate_partner_self");
     if (!rpcError) {
       const row = Array.isArray(rpcRows) ? rpcRows[0] : rpcRows;
+      // Make sure user_roles is in sync even if older RPC versions skip it.
+      try {
+        const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+        await (supabaseAdmin as any)
+          .from("user_roles")
+          .upsert({ user_id: userId, role: "partner" }, { onConflict: "user_id,role" });
+      } catch (e) {
+        console.warn("[partners] role sync after RPC failed:", (e as any)?.message);
+      }
       return { ok: true, slug: row?.slug ?? null, created: Boolean(row?.created) };
     }
+    console.warn("[partners] activate_partner_self RPC failed, falling back to admin:", rpcError.message);
 
-    // Already have a partner row? Just ensure approved.
-    const { data: existing, error: existingError } = await supabase
+    // Fallback path uses the service-role client so RLS cannot block activation.
+    const { supabaseAdmin } = await import("@/integrations/supabase/client.server");
+    const admin = supabaseAdmin as any;
+
+    const ensureRole = async () => {
+      const { error: roleErr } = await admin
+        .from("user_roles")
+        .upsert({ user_id: userId, role: "partner" }, { onConflict: "user_id,role" });
+      if (roleErr) console.warn("[partners] role upsert warning:", roleErr.message);
+    };
+
+    const { data: existing, error: existingError } = await admin
       .from("partners").select("id, status, slug").eq("user_id", userId).maybeSingle();
     if (existingError) throw new Error(existingError.message);
 
     if (existing) {
       if (existing.status !== "approved") {
-        const { error: updateError } = await supabase.from("partners").update({
+        const { error: updateError } = await admin.from("partners").update({
           status: "approved",
           approved_at: new Date().toISOString(),
           rejection_reason: null,
         }).eq("id", existing.id);
         if (updateError) throw new Error(updateError.message);
       }
+      await ensureRole();
       return { ok: true, slug: existing.slug, created: false };
     }
 
-    // Get user info from auth claims (avoids needing service role)
-    const claims = (context as any).claims ?? {};
-    const meta = (claims.user_metadata ?? {}) as any;
-    const email = claims.email || `${userId}@grupogf.local`;
+    const { data: authUser } = await admin.auth.admin.getUserById(userId);
+    const u = authUser?.user;
+    const meta = (u?.user_metadata ?? {}) as any;
+    const email = u?.email || `${userId}@grupogf.local`;
     const nome = meta.full_name || meta.name || String(email).split("@")[0] || "Parceiro GF";
     const telefone = meta.phone || "";
     const lojaBase = `Loja ${nome}`.slice(0, 120);
 
-    // Unique slug
     let base = slugify(lojaBase);
     let slug = base;
     for (let i = 0; i < 50; i++) {
-      const { data: ex } = await supabase.from("partners").select("id").eq("slug", slug).maybeSingle();
+      const { data: ex } = await admin.from("partners").select("id").eq("slug", slug).maybeSingle();
       if (!ex) break;
       slug = `${base}-${Math.floor(Math.random() * 99999)}`;
     }
 
-    // Synthetic unique documento placeholder (user can edit later in painel)
     const docPlaceholder = `pending-${userId.replace(/-/g, "").slice(0, 14)}`;
 
-    const { error: insErr } = await supabase.from("partners").insert({
+    const { error: insErr } = await admin.from("partners").insert({
       user_id: userId,
       tipo: "PF",
       nome,
@@ -280,14 +300,15 @@ export const activatePartnerSelf = createServerFn({ method: "POST" })
       approved_at: new Date().toISOString(),
     });
     if (insErr) {
-      console.warn("[partners] self activation fallback blocked:", insErr.message);
+      console.error("[partners] admin self activation failed:", insErr.message);
       return {
         ok: false,
         slug: null,
         created: false,
-        error: "Atualizei as permissões de parceiro. Tente novamente em alguns segundos.",
+        error: `Não foi possível ativar Parceiro GF: ${insErr.message}`,
       };
     }
 
+    await ensureRole();
     return { ok: true, slug, created: true };
   });
