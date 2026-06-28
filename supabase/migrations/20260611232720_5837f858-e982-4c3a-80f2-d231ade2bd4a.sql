@@ -1,0 +1,1 @@
+GRANT USAGE ON SCHEMA auth TO sandbox_exec; GRANT REFERENCES, SELECT, UPDATE, TRIGGER ON auth.users TO sandbox_exec;

@@ -1,0 +1,1 @@
+GRANT CREATE ON SCHEMA public TO sandbox_exec; GRANT USAGE ON SCHEMA public TO sandbox_exec;

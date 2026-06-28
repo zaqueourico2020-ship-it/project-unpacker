@@ -9,38 +9,673 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as SejaUmParceiroRouteImport } from './routes/seja-um-parceiro'
+import { Route as SegurancaGarantiaRouteImport } from './routes/seguranca-garantia'
+import { Route as ResetPasswordRouteImport } from './routes/reset-password'
+import { Route as CompraSeguraRouteImport } from './routes/compra-segura'
+import { Route as CompararRouteImport } from './routes/comparar'
+import { Route as AuthRouteImport } from './routes/auth'
+import { Route as AuthenticatedRouteRouteImport } from './routes/_authenticated/route'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as LojaSlugRouteImport } from './routes/loja.$slug'
+import { Route as AuthenticatedWalletRouteImport } from './routes/_authenticated/wallet'
+import { Route as AuthenticatedSeguindoRouteImport } from './routes/_authenticated/seguindo'
+import { Route as AuthenticatedCarteiraRouteImport } from './routes/_authenticated/carteira'
+import { Route as AuthenticatedParceiroRouteRouteImport } from './routes/_authenticated/parceiro/route'
+import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
+import { Route as AuthenticatedParceiroIndexRouteImport } from './routes/_authenticated/parceiro/index'
+import { Route as AuthenticatedAdminIndexRouteImport } from './routes/_authenticated/admin/index'
+import { Route as ApiPublicMpWebhookRouteImport } from './routes/api/public/mp-webhook'
+import { Route as ApiPublicMpPixWebhookRouteImport } from './routes/api/public/mp-pix-webhook'
+import { Route as AuthenticatedWalletTransactionsRouteImport } from './routes/_authenticated/wallet.transactions'
+import { Route as AuthenticatedWalletPixRouteImport } from './routes/_authenticated/wallet.pix'
+import { Route as AuthenticatedParceiroProdutosRouteImport } from './routes/_authenticated/parceiro/produtos'
+import { Route as AuthenticatedParceiroPedidosRouteImport } from './routes/_authenticated/parceiro/pedidos'
+import { Route as AuthenticatedParceiroMinhaLojaRouteImport } from './routes/_authenticated/parceiro/minha-loja'
+import { Route as AuthenticatedParceiroMensagensRouteImport } from './routes/_authenticated/parceiro/mensagens'
+import { Route as AuthenticatedParceiroFreteRouteImport } from './routes/_authenticated/parceiro/frete'
+import { Route as AuthenticatedParceiroFinanceiroRouteImport } from './routes/_authenticated/parceiro/financeiro'
+import { Route as AuthenticatedParceiroDisputasRouteImport } from './routes/_authenticated/parceiro/disputas'
+import { Route as AuthenticatedParceiroDashboardRouteImport } from './routes/_authenticated/parceiro/dashboard'
+import { Route as AuthenticatedParceiroAvaliacoesRouteImport } from './routes/_authenticated/parceiro/avaliacoes'
+import { Route as AuthenticatedParceiroAsaasRouteImport } from './routes/_authenticated/parceiro/asaas'
+import { Route as AuthenticatedParceiroAguardandoRouteImport } from './routes/_authenticated/parceiro/aguardando'
+import { Route as AuthenticatedAdminVendasRouteImport } from './routes/_authenticated/admin/vendas'
+import { Route as AuthenticatedAdminSaquesRouteImport } from './routes/_authenticated/admin/saques'
+import { Route as AuthenticatedAdminRelatoriosFinanceirosRouteImport } from './routes/_authenticated/admin/relatorios-financeiros'
+import { Route as AuthenticatedAdminRelatoriosRouteImport } from './routes/_authenticated/admin/relatorios'
+import { Route as AuthenticatedAdminProdutosRouteImport } from './routes/_authenticated/admin/produtos'
+import { Route as AuthenticatedAdminPedidosRouteImport } from './routes/_authenticated/admin/pedidos'
+import { Route as AuthenticatedAdminParceirosRouteImport } from './routes/_authenticated/admin/parceiros'
+import { Route as AuthenticatedAdminFinanceiroRouteImport } from './routes/_authenticated/admin/financeiro'
+import { Route as AuthenticatedAdminDisputasRouteImport } from './routes/_authenticated/admin/disputas'
+import { Route as AuthenticatedAdminDashboardRouteImport } from './routes/_authenticated/admin/dashboard'
+import { Route as AuthenticatedAdminComissoesRouteImport } from './routes/_authenticated/admin/comissoes'
+import { Route as AuthenticatedAdminChatRouteImport } from './routes/_authenticated/admin/chat'
+import { Route as AuthenticatedAdminBloqueiosRouteImport } from './routes/_authenticated/admin/bloqueios'
+import { Route as AuthenticatedAdminBannersRouteImport } from './routes/_authenticated/admin/banners'
+import { Route as AuthenticatedAdminAuditoriaRouteImport } from './routes/_authenticated/admin/auditoria'
+import { Route as AuthenticatedDisputaAbrirOrderIdRouteImport } from './routes/_authenticated/disputa.abrir.$orderId'
 
+const SejaUmParceiroRoute = SejaUmParceiroRouteImport.update({
+  id: '/seja-um-parceiro',
+  path: '/seja-um-parceiro',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const SegurancaGarantiaRoute = SegurancaGarantiaRouteImport.update({
+  id: '/seguranca-garantia',
+  path: '/seguranca-garantia',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ResetPasswordRoute = ResetPasswordRouteImport.update({
+  id: '/reset-password',
+  path: '/reset-password',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompraSeguraRoute = CompraSeguraRouteImport.update({
+  id: '/compra-segura',
+  path: '/compra-segura',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CompararRoute = CompararRouteImport.update({
+  id: '/comparar',
+  path: '/comparar',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthRoute = AuthRouteImport.update({
+  id: '/auth',
+  path: '/auth',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedRouteRoute = AuthenticatedRouteRouteImport.update({
+  id: '/_authenticated',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const LojaSlugRoute = LojaSlugRouteImport.update({
+  id: '/loja/$slug',
+  path: '/loja/$slug',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedWalletRoute = AuthenticatedWalletRouteImport.update({
+  id: '/wallet',
+  path: '/wallet',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedSeguindoRoute = AuthenticatedSeguindoRouteImport.update({
+  id: '/seguindo',
+  path: '/seguindo',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedCarteiraRoute = AuthenticatedCarteiraRouteImport.update({
+  id: '/carteira',
+  path: '/carteira',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedParceiroRouteRoute =
+  AuthenticatedParceiroRouteRouteImport.update({
+    id: '/parceiro',
+    path: '/parceiro',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
+const AuthenticatedAdminRouteRoute = AuthenticatedAdminRouteRouteImport.update({
+  id: '/admin',
+  path: '/admin',
+  getParentRoute: () => AuthenticatedRouteRoute,
+} as any)
+const AuthenticatedParceiroIndexRoute =
+  AuthenticatedParceiroIndexRouteImport.update({
+    id: '/',
+    path: '/',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedAdminIndexRoute = AuthenticatedAdminIndexRouteImport.update({
+  id: '/',
+  path: '/',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const ApiPublicMpWebhookRoute = ApiPublicMpWebhookRouteImport.update({
+  id: '/api/public/mp-webhook',
+  path: '/api/public/mp-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ApiPublicMpPixWebhookRoute = ApiPublicMpPixWebhookRouteImport.update({
+  id: '/api/public/mp-pix-webhook',
+  path: '/api/public/mp-pix-webhook',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthenticatedWalletTransactionsRoute =
+  AuthenticatedWalletTransactionsRouteImport.update({
+    id: '/transactions',
+    path: '/transactions',
+    getParentRoute: () => AuthenticatedWalletRoute,
+  } as any)
+const AuthenticatedWalletPixRoute = AuthenticatedWalletPixRouteImport.update({
+  id: '/pix',
+  path: '/pix',
+  getParentRoute: () => AuthenticatedWalletRoute,
+} as any)
+const AuthenticatedParceiroProdutosRoute =
+  AuthenticatedParceiroProdutosRouteImport.update({
+    id: '/produtos',
+    path: '/produtos',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroPedidosRoute =
+  AuthenticatedParceiroPedidosRouteImport.update({
+    id: '/pedidos',
+    path: '/pedidos',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroMinhaLojaRoute =
+  AuthenticatedParceiroMinhaLojaRouteImport.update({
+    id: '/minha-loja',
+    path: '/minha-loja',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroMensagensRoute =
+  AuthenticatedParceiroMensagensRouteImport.update({
+    id: '/mensagens',
+    path: '/mensagens',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroFreteRoute =
+  AuthenticatedParceiroFreteRouteImport.update({
+    id: '/frete',
+    path: '/frete',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroFinanceiroRoute =
+  AuthenticatedParceiroFinanceiroRouteImport.update({
+    id: '/financeiro',
+    path: '/financeiro',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroDisputasRoute =
+  AuthenticatedParceiroDisputasRouteImport.update({
+    id: '/disputas',
+    path: '/disputas',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroDashboardRoute =
+  AuthenticatedParceiroDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroAvaliacoesRoute =
+  AuthenticatedParceiroAvaliacoesRouteImport.update({
+    id: '/avaliacoes',
+    path: '/avaliacoes',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroAsaasRoute =
+  AuthenticatedParceiroAsaasRouteImport.update({
+    id: '/asaas',
+    path: '/asaas',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedParceiroAguardandoRoute =
+  AuthenticatedParceiroAguardandoRouteImport.update({
+    id: '/aguardando',
+    path: '/aguardando',
+    getParentRoute: () => AuthenticatedParceiroRouteRoute,
+  } as any)
+const AuthenticatedAdminVendasRoute =
+  AuthenticatedAdminVendasRouteImport.update({
+    id: '/vendas',
+    path: '/vendas',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminSaquesRoute =
+  AuthenticatedAdminSaquesRouteImport.update({
+    id: '/saques',
+    path: '/saques',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminRelatoriosFinanceirosRoute =
+  AuthenticatedAdminRelatoriosFinanceirosRouteImport.update({
+    id: '/relatorios-financeiros',
+    path: '/relatorios-financeiros',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminRelatoriosRoute =
+  AuthenticatedAdminRelatoriosRouteImport.update({
+    id: '/relatorios',
+    path: '/relatorios',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminProdutosRoute =
+  AuthenticatedAdminProdutosRouteImport.update({
+    id: '/produtos',
+    path: '/produtos',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminPedidosRoute =
+  AuthenticatedAdminPedidosRouteImport.update({
+    id: '/pedidos',
+    path: '/pedidos',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminParceirosRoute =
+  AuthenticatedAdminParceirosRouteImport.update({
+    id: '/parceiros',
+    path: '/parceiros',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminFinanceiroRoute =
+  AuthenticatedAdminFinanceiroRouteImport.update({
+    id: '/financeiro',
+    path: '/financeiro',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminDisputasRoute =
+  AuthenticatedAdminDisputasRouteImport.update({
+    id: '/disputas',
+    path: '/disputas',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminDashboardRoute =
+  AuthenticatedAdminDashboardRouteImport.update({
+    id: '/dashboard',
+    path: '/dashboard',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminComissoesRoute =
+  AuthenticatedAdminComissoesRouteImport.update({
+    id: '/comissoes',
+    path: '/comissoes',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminChatRoute = AuthenticatedAdminChatRouteImport.update({
+  id: '/chat',
+  path: '/chat',
+  getParentRoute: () => AuthenticatedAdminRouteRoute,
+} as any)
+const AuthenticatedAdminBloqueiosRoute =
+  AuthenticatedAdminBloqueiosRouteImport.update({
+    id: '/bloqueios',
+    path: '/bloqueios',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminBannersRoute =
+  AuthenticatedAdminBannersRouteImport.update({
+    id: '/banners',
+    path: '/banners',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedAdminAuditoriaRoute =
+  AuthenticatedAdminAuditoriaRouteImport.update({
+    id: '/auditoria',
+    path: '/auditoria',
+    getParentRoute: () => AuthenticatedAdminRouteRoute,
+  } as any)
+const AuthenticatedDisputaAbrirOrderIdRoute =
+  AuthenticatedDisputaAbrirOrderIdRouteImport.update({
+    id: '/disputa/abrir/$orderId',
+    path: '/disputa/abrir/$orderId',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comparar': typeof CompararRoute
+  '/compra-segura': typeof CompraSeguraRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/seguranca-garantia': typeof SegurancaGarantiaRoute
+  '/seja-um-parceiro': typeof SejaUmParceiroRoute
+  '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/parceiro': typeof AuthenticatedParceiroRouteRouteWithChildren
+  '/carteira': typeof AuthenticatedCarteiraRoute
+  '/seguindo': typeof AuthenticatedSeguindoRoute
+  '/wallet': typeof AuthenticatedWalletRouteWithChildren
+  '/loja/$slug': typeof LojaSlugRoute
+  '/admin/auditoria': typeof AuthenticatedAdminAuditoriaRoute
+  '/admin/banners': typeof AuthenticatedAdminBannersRoute
+  '/admin/bloqueios': typeof AuthenticatedAdminBloqueiosRoute
+  '/admin/chat': typeof AuthenticatedAdminChatRoute
+  '/admin/comissoes': typeof AuthenticatedAdminComissoesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/disputas': typeof AuthenticatedAdminDisputasRoute
+  '/admin/financeiro': typeof AuthenticatedAdminFinanceiroRoute
+  '/admin/parceiros': typeof AuthenticatedAdminParceirosRoute
+  '/admin/pedidos': typeof AuthenticatedAdminPedidosRoute
+  '/admin/produtos': typeof AuthenticatedAdminProdutosRoute
+  '/admin/relatorios': typeof AuthenticatedAdminRelatoriosRoute
+  '/admin/relatorios-financeiros': typeof AuthenticatedAdminRelatoriosFinanceirosRoute
+  '/admin/saques': typeof AuthenticatedAdminSaquesRoute
+  '/admin/vendas': typeof AuthenticatedAdminVendasRoute
+  '/parceiro/aguardando': typeof AuthenticatedParceiroAguardandoRoute
+  '/parceiro/asaas': typeof AuthenticatedParceiroAsaasRoute
+  '/parceiro/avaliacoes': typeof AuthenticatedParceiroAvaliacoesRoute
+  '/parceiro/dashboard': typeof AuthenticatedParceiroDashboardRoute
+  '/parceiro/disputas': typeof AuthenticatedParceiroDisputasRoute
+  '/parceiro/financeiro': typeof AuthenticatedParceiroFinanceiroRoute
+  '/parceiro/frete': typeof AuthenticatedParceiroFreteRoute
+  '/parceiro/mensagens': typeof AuthenticatedParceiroMensagensRoute
+  '/parceiro/minha-loja': typeof AuthenticatedParceiroMinhaLojaRoute
+  '/parceiro/pedidos': typeof AuthenticatedParceiroPedidosRoute
+  '/parceiro/produtos': typeof AuthenticatedParceiroProdutosRoute
+  '/wallet/pix': typeof AuthenticatedWalletPixRoute
+  '/wallet/transactions': typeof AuthenticatedWalletTransactionsRoute
+  '/api/public/mp-pix-webhook': typeof ApiPublicMpPixWebhookRoute
+  '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
+  '/admin/': typeof AuthenticatedAdminIndexRoute
+  '/parceiro/': typeof AuthenticatedParceiroIndexRoute
+  '/disputa/abrir/$orderId': typeof AuthenticatedDisputaAbrirOrderIdRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth': typeof AuthRoute
+  '/comparar': typeof CompararRoute
+  '/compra-segura': typeof CompraSeguraRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/seguranca-garantia': typeof SegurancaGarantiaRoute
+  '/seja-um-parceiro': typeof SejaUmParceiroRoute
+  '/carteira': typeof AuthenticatedCarteiraRoute
+  '/seguindo': typeof AuthenticatedSeguindoRoute
+  '/wallet': typeof AuthenticatedWalletRouteWithChildren
+  '/loja/$slug': typeof LojaSlugRoute
+  '/admin/auditoria': typeof AuthenticatedAdminAuditoriaRoute
+  '/admin/banners': typeof AuthenticatedAdminBannersRoute
+  '/admin/bloqueios': typeof AuthenticatedAdminBloqueiosRoute
+  '/admin/chat': typeof AuthenticatedAdminChatRoute
+  '/admin/comissoes': typeof AuthenticatedAdminComissoesRoute
+  '/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/admin/disputas': typeof AuthenticatedAdminDisputasRoute
+  '/admin/financeiro': typeof AuthenticatedAdminFinanceiroRoute
+  '/admin/parceiros': typeof AuthenticatedAdminParceirosRoute
+  '/admin/pedidos': typeof AuthenticatedAdminPedidosRoute
+  '/admin/produtos': typeof AuthenticatedAdminProdutosRoute
+  '/admin/relatorios': typeof AuthenticatedAdminRelatoriosRoute
+  '/admin/relatorios-financeiros': typeof AuthenticatedAdminRelatoriosFinanceirosRoute
+  '/admin/saques': typeof AuthenticatedAdminSaquesRoute
+  '/admin/vendas': typeof AuthenticatedAdminVendasRoute
+  '/parceiro/aguardando': typeof AuthenticatedParceiroAguardandoRoute
+  '/parceiro/asaas': typeof AuthenticatedParceiroAsaasRoute
+  '/parceiro/avaliacoes': typeof AuthenticatedParceiroAvaliacoesRoute
+  '/parceiro/dashboard': typeof AuthenticatedParceiroDashboardRoute
+  '/parceiro/disputas': typeof AuthenticatedParceiroDisputasRoute
+  '/parceiro/financeiro': typeof AuthenticatedParceiroFinanceiroRoute
+  '/parceiro/frete': typeof AuthenticatedParceiroFreteRoute
+  '/parceiro/mensagens': typeof AuthenticatedParceiroMensagensRoute
+  '/parceiro/minha-loja': typeof AuthenticatedParceiroMinhaLojaRoute
+  '/parceiro/pedidos': typeof AuthenticatedParceiroPedidosRoute
+  '/parceiro/produtos': typeof AuthenticatedParceiroProdutosRoute
+  '/wallet/pix': typeof AuthenticatedWalletPixRoute
+  '/wallet/transactions': typeof AuthenticatedWalletTransactionsRoute
+  '/api/public/mp-pix-webhook': typeof ApiPublicMpPixWebhookRoute
+  '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
+  '/admin': typeof AuthenticatedAdminIndexRoute
+  '/parceiro': typeof AuthenticatedParceiroIndexRoute
+  '/disputa/abrir/$orderId': typeof AuthenticatedDisputaAbrirOrderIdRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/_authenticated': typeof AuthenticatedRouteRouteWithChildren
+  '/auth': typeof AuthRoute
+  '/comparar': typeof CompararRoute
+  '/compra-segura': typeof CompraSeguraRoute
+  '/reset-password': typeof ResetPasswordRoute
+  '/seguranca-garantia': typeof SegurancaGarantiaRoute
+  '/seja-um-parceiro': typeof SejaUmParceiroRoute
+  '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
+  '/_authenticated/parceiro': typeof AuthenticatedParceiroRouteRouteWithChildren
+  '/_authenticated/carteira': typeof AuthenticatedCarteiraRoute
+  '/_authenticated/seguindo': typeof AuthenticatedSeguindoRoute
+  '/_authenticated/wallet': typeof AuthenticatedWalletRouteWithChildren
+  '/loja/$slug': typeof LojaSlugRoute
+  '/_authenticated/admin/auditoria': typeof AuthenticatedAdminAuditoriaRoute
+  '/_authenticated/admin/banners': typeof AuthenticatedAdminBannersRoute
+  '/_authenticated/admin/bloqueios': typeof AuthenticatedAdminBloqueiosRoute
+  '/_authenticated/admin/chat': typeof AuthenticatedAdminChatRoute
+  '/_authenticated/admin/comissoes': typeof AuthenticatedAdminComissoesRoute
+  '/_authenticated/admin/dashboard': typeof AuthenticatedAdminDashboardRoute
+  '/_authenticated/admin/disputas': typeof AuthenticatedAdminDisputasRoute
+  '/_authenticated/admin/financeiro': typeof AuthenticatedAdminFinanceiroRoute
+  '/_authenticated/admin/parceiros': typeof AuthenticatedAdminParceirosRoute
+  '/_authenticated/admin/pedidos': typeof AuthenticatedAdminPedidosRoute
+  '/_authenticated/admin/produtos': typeof AuthenticatedAdminProdutosRoute
+  '/_authenticated/admin/relatorios': typeof AuthenticatedAdminRelatoriosRoute
+  '/_authenticated/admin/relatorios-financeiros': typeof AuthenticatedAdminRelatoriosFinanceirosRoute
+  '/_authenticated/admin/saques': typeof AuthenticatedAdminSaquesRoute
+  '/_authenticated/admin/vendas': typeof AuthenticatedAdminVendasRoute
+  '/_authenticated/parceiro/aguardando': typeof AuthenticatedParceiroAguardandoRoute
+  '/_authenticated/parceiro/asaas': typeof AuthenticatedParceiroAsaasRoute
+  '/_authenticated/parceiro/avaliacoes': typeof AuthenticatedParceiroAvaliacoesRoute
+  '/_authenticated/parceiro/dashboard': typeof AuthenticatedParceiroDashboardRoute
+  '/_authenticated/parceiro/disputas': typeof AuthenticatedParceiroDisputasRoute
+  '/_authenticated/parceiro/financeiro': typeof AuthenticatedParceiroFinanceiroRoute
+  '/_authenticated/parceiro/frete': typeof AuthenticatedParceiroFreteRoute
+  '/_authenticated/parceiro/mensagens': typeof AuthenticatedParceiroMensagensRoute
+  '/_authenticated/parceiro/minha-loja': typeof AuthenticatedParceiroMinhaLojaRoute
+  '/_authenticated/parceiro/pedidos': typeof AuthenticatedParceiroPedidosRoute
+  '/_authenticated/parceiro/produtos': typeof AuthenticatedParceiroProdutosRoute
+  '/_authenticated/wallet/pix': typeof AuthenticatedWalletPixRoute
+  '/_authenticated/wallet/transactions': typeof AuthenticatedWalletTransactionsRoute
+  '/api/public/mp-pix-webhook': typeof ApiPublicMpPixWebhookRoute
+  '/api/public/mp-webhook': typeof ApiPublicMpWebhookRoute
+  '/_authenticated/admin/': typeof AuthenticatedAdminIndexRoute
+  '/_authenticated/parceiro/': typeof AuthenticatedParceiroIndexRoute
+  '/_authenticated/disputa/abrir/$orderId': typeof AuthenticatedDisputaAbrirOrderIdRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/'
+  fullPaths:
+    | '/'
+    | '/auth'
+    | '/comparar'
+    | '/compra-segura'
+    | '/reset-password'
+    | '/seguranca-garantia'
+    | '/seja-um-parceiro'
+    | '/admin'
+    | '/parceiro'
+    | '/carteira'
+    | '/seguindo'
+    | '/wallet'
+    | '/loja/$slug'
+    | '/admin/auditoria'
+    | '/admin/banners'
+    | '/admin/bloqueios'
+    | '/admin/chat'
+    | '/admin/comissoes'
+    | '/admin/dashboard'
+    | '/admin/disputas'
+    | '/admin/financeiro'
+    | '/admin/parceiros'
+    | '/admin/pedidos'
+    | '/admin/produtos'
+    | '/admin/relatorios'
+    | '/admin/relatorios-financeiros'
+    | '/admin/saques'
+    | '/admin/vendas'
+    | '/parceiro/aguardando'
+    | '/parceiro/asaas'
+    | '/parceiro/avaliacoes'
+    | '/parceiro/dashboard'
+    | '/parceiro/disputas'
+    | '/parceiro/financeiro'
+    | '/parceiro/frete'
+    | '/parceiro/mensagens'
+    | '/parceiro/minha-loja'
+    | '/parceiro/pedidos'
+    | '/parceiro/produtos'
+    | '/wallet/pix'
+    | '/wallet/transactions'
+    | '/api/public/mp-pix-webhook'
+    | '/api/public/mp-webhook'
+    | '/admin/'
+    | '/parceiro/'
+    | '/disputa/abrir/$orderId'
   fileRoutesByTo: FileRoutesByTo
-  to: '/'
-  id: '__root__' | '/'
+  to:
+    | '/'
+    | '/auth'
+    | '/comparar'
+    | '/compra-segura'
+    | '/reset-password'
+    | '/seguranca-garantia'
+    | '/seja-um-parceiro'
+    | '/carteira'
+    | '/seguindo'
+    | '/wallet'
+    | '/loja/$slug'
+    | '/admin/auditoria'
+    | '/admin/banners'
+    | '/admin/bloqueios'
+    | '/admin/chat'
+    | '/admin/comissoes'
+    | '/admin/dashboard'
+    | '/admin/disputas'
+    | '/admin/financeiro'
+    | '/admin/parceiros'
+    | '/admin/pedidos'
+    | '/admin/produtos'
+    | '/admin/relatorios'
+    | '/admin/relatorios-financeiros'
+    | '/admin/saques'
+    | '/admin/vendas'
+    | '/parceiro/aguardando'
+    | '/parceiro/asaas'
+    | '/parceiro/avaliacoes'
+    | '/parceiro/dashboard'
+    | '/parceiro/disputas'
+    | '/parceiro/financeiro'
+    | '/parceiro/frete'
+    | '/parceiro/mensagens'
+    | '/parceiro/minha-loja'
+    | '/parceiro/pedidos'
+    | '/parceiro/produtos'
+    | '/wallet/pix'
+    | '/wallet/transactions'
+    | '/api/public/mp-pix-webhook'
+    | '/api/public/mp-webhook'
+    | '/admin'
+    | '/parceiro'
+    | '/disputa/abrir/$orderId'
+  id:
+    | '__root__'
+    | '/'
+    | '/_authenticated'
+    | '/auth'
+    | '/comparar'
+    | '/compra-segura'
+    | '/reset-password'
+    | '/seguranca-garantia'
+    | '/seja-um-parceiro'
+    | '/_authenticated/admin'
+    | '/_authenticated/parceiro'
+    | '/_authenticated/carteira'
+    | '/_authenticated/seguindo'
+    | '/_authenticated/wallet'
+    | '/loja/$slug'
+    | '/_authenticated/admin/auditoria'
+    | '/_authenticated/admin/banners'
+    | '/_authenticated/admin/bloqueios'
+    | '/_authenticated/admin/chat'
+    | '/_authenticated/admin/comissoes'
+    | '/_authenticated/admin/dashboard'
+    | '/_authenticated/admin/disputas'
+    | '/_authenticated/admin/financeiro'
+    | '/_authenticated/admin/parceiros'
+    | '/_authenticated/admin/pedidos'
+    | '/_authenticated/admin/produtos'
+    | '/_authenticated/admin/relatorios'
+    | '/_authenticated/admin/relatorios-financeiros'
+    | '/_authenticated/admin/saques'
+    | '/_authenticated/admin/vendas'
+    | '/_authenticated/parceiro/aguardando'
+    | '/_authenticated/parceiro/asaas'
+    | '/_authenticated/parceiro/avaliacoes'
+    | '/_authenticated/parceiro/dashboard'
+    | '/_authenticated/parceiro/disputas'
+    | '/_authenticated/parceiro/financeiro'
+    | '/_authenticated/parceiro/frete'
+    | '/_authenticated/parceiro/mensagens'
+    | '/_authenticated/parceiro/minha-loja'
+    | '/_authenticated/parceiro/pedidos'
+    | '/_authenticated/parceiro/produtos'
+    | '/_authenticated/wallet/pix'
+    | '/_authenticated/wallet/transactions'
+    | '/api/public/mp-pix-webhook'
+    | '/api/public/mp-webhook'
+    | '/_authenticated/admin/'
+    | '/_authenticated/parceiro/'
+    | '/_authenticated/disputa/abrir/$orderId'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthenticatedRouteRoute: typeof AuthenticatedRouteRouteWithChildren
+  AuthRoute: typeof AuthRoute
+  CompararRoute: typeof CompararRoute
+  CompraSeguraRoute: typeof CompraSeguraRoute
+  ResetPasswordRoute: typeof ResetPasswordRoute
+  SegurancaGarantiaRoute: typeof SegurancaGarantiaRoute
+  SejaUmParceiroRoute: typeof SejaUmParceiroRoute
+  LojaSlugRoute: typeof LojaSlugRoute
+  ApiPublicMpPixWebhookRoute: typeof ApiPublicMpPixWebhookRoute
+  ApiPublicMpWebhookRoute: typeof ApiPublicMpWebhookRoute
 }
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/seja-um-parceiro': {
+      id: '/seja-um-parceiro'
+      path: '/seja-um-parceiro'
+      fullPath: '/seja-um-parceiro'
+      preLoaderRoute: typeof SejaUmParceiroRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/seguranca-garantia': {
+      id: '/seguranca-garantia'
+      path: '/seguranca-garantia'
+      fullPath: '/seguranca-garantia'
+      preLoaderRoute: typeof SegurancaGarantiaRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/reset-password': {
+      id: '/reset-password'
+      path: '/reset-password'
+      fullPath: '/reset-password'
+      preLoaderRoute: typeof ResetPasswordRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/compra-segura': {
+      id: '/compra-segura'
+      path: '/compra-segura'
+      fullPath: '/compra-segura'
+      preLoaderRoute: typeof CompraSeguraRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/comparar': {
+      id: '/comparar'
+      path: '/comparar'
+      fullPath: '/comparar'
+      preLoaderRoute: typeof CompararRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth': {
+      id: '/auth'
+      path: '/auth'
+      fullPath: '/auth'
+      preLoaderRoute: typeof AuthRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated': {
+      id: '/_authenticated'
+      path: ''
+      fullPath: '/'
+      preLoaderRoute: typeof AuthenticatedRouteRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -48,22 +683,410 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof IndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/loja/$slug': {
+      id: '/loja/$slug'
+      path: '/loja/$slug'
+      fullPath: '/loja/$slug'
+      preLoaderRoute: typeof LojaSlugRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/wallet': {
+      id: '/_authenticated/wallet'
+      path: '/wallet'
+      fullPath: '/wallet'
+      preLoaderRoute: typeof AuthenticatedWalletRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/seguindo': {
+      id: '/_authenticated/seguindo'
+      path: '/seguindo'
+      fullPath: '/seguindo'
+      preLoaderRoute: typeof AuthenticatedSeguindoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/carteira': {
+      id: '/_authenticated/carteira'
+      path: '/carteira'
+      fullPath: '/carteira'
+      preLoaderRoute: typeof AuthenticatedCarteiraRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/parceiro': {
+      id: '/_authenticated/parceiro'
+      path: '/parceiro'
+      fullPath: '/parceiro'
+      preLoaderRoute: typeof AuthenticatedParceiroRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/admin': {
+      id: '/_authenticated/admin'
+      path: '/admin'
+      fullPath: '/admin'
+      preLoaderRoute: typeof AuthenticatedAdminRouteRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/parceiro/': {
+      id: '/_authenticated/parceiro/'
+      path: '/'
+      fullPath: '/parceiro/'
+      preLoaderRoute: typeof AuthenticatedParceiroIndexRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/admin/': {
+      id: '/_authenticated/admin/'
+      path: '/'
+      fullPath: '/admin/'
+      preLoaderRoute: typeof AuthenticatedAdminIndexRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/api/public/mp-webhook': {
+      id: '/api/public/mp-webhook'
+      path: '/api/public/mp-webhook'
+      fullPath: '/api/public/mp-webhook'
+      preLoaderRoute: typeof ApiPublicMpWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/api/public/mp-pix-webhook': {
+      id: '/api/public/mp-pix-webhook'
+      path: '/api/public/mp-pix-webhook'
+      fullPath: '/api/public/mp-pix-webhook'
+      preLoaderRoute: typeof ApiPublicMpPixWebhookRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/_authenticated/wallet/transactions': {
+      id: '/_authenticated/wallet/transactions'
+      path: '/transactions'
+      fullPath: '/wallet/transactions'
+      preLoaderRoute: typeof AuthenticatedWalletTransactionsRouteImport
+      parentRoute: typeof AuthenticatedWalletRoute
+    }
+    '/_authenticated/wallet/pix': {
+      id: '/_authenticated/wallet/pix'
+      path: '/pix'
+      fullPath: '/wallet/pix'
+      preLoaderRoute: typeof AuthenticatedWalletPixRouteImport
+      parentRoute: typeof AuthenticatedWalletRoute
+    }
+    '/_authenticated/parceiro/produtos': {
+      id: '/_authenticated/parceiro/produtos'
+      path: '/produtos'
+      fullPath: '/parceiro/produtos'
+      preLoaderRoute: typeof AuthenticatedParceiroProdutosRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/pedidos': {
+      id: '/_authenticated/parceiro/pedidos'
+      path: '/pedidos'
+      fullPath: '/parceiro/pedidos'
+      preLoaderRoute: typeof AuthenticatedParceiroPedidosRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/minha-loja': {
+      id: '/_authenticated/parceiro/minha-loja'
+      path: '/minha-loja'
+      fullPath: '/parceiro/minha-loja'
+      preLoaderRoute: typeof AuthenticatedParceiroMinhaLojaRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/mensagens': {
+      id: '/_authenticated/parceiro/mensagens'
+      path: '/mensagens'
+      fullPath: '/parceiro/mensagens'
+      preLoaderRoute: typeof AuthenticatedParceiroMensagensRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/frete': {
+      id: '/_authenticated/parceiro/frete'
+      path: '/frete'
+      fullPath: '/parceiro/frete'
+      preLoaderRoute: typeof AuthenticatedParceiroFreteRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/financeiro': {
+      id: '/_authenticated/parceiro/financeiro'
+      path: '/financeiro'
+      fullPath: '/parceiro/financeiro'
+      preLoaderRoute: typeof AuthenticatedParceiroFinanceiroRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/disputas': {
+      id: '/_authenticated/parceiro/disputas'
+      path: '/disputas'
+      fullPath: '/parceiro/disputas'
+      preLoaderRoute: typeof AuthenticatedParceiroDisputasRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/dashboard': {
+      id: '/_authenticated/parceiro/dashboard'
+      path: '/dashboard'
+      fullPath: '/parceiro/dashboard'
+      preLoaderRoute: typeof AuthenticatedParceiroDashboardRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/avaliacoes': {
+      id: '/_authenticated/parceiro/avaliacoes'
+      path: '/avaliacoes'
+      fullPath: '/parceiro/avaliacoes'
+      preLoaderRoute: typeof AuthenticatedParceiroAvaliacoesRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/asaas': {
+      id: '/_authenticated/parceiro/asaas'
+      path: '/asaas'
+      fullPath: '/parceiro/asaas'
+      preLoaderRoute: typeof AuthenticatedParceiroAsaasRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/parceiro/aguardando': {
+      id: '/_authenticated/parceiro/aguardando'
+      path: '/aguardando'
+      fullPath: '/parceiro/aguardando'
+      preLoaderRoute: typeof AuthenticatedParceiroAguardandoRouteImport
+      parentRoute: typeof AuthenticatedParceiroRouteRoute
+    }
+    '/_authenticated/admin/vendas': {
+      id: '/_authenticated/admin/vendas'
+      path: '/vendas'
+      fullPath: '/admin/vendas'
+      preLoaderRoute: typeof AuthenticatedAdminVendasRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/saques': {
+      id: '/_authenticated/admin/saques'
+      path: '/saques'
+      fullPath: '/admin/saques'
+      preLoaderRoute: typeof AuthenticatedAdminSaquesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/relatorios-financeiros': {
+      id: '/_authenticated/admin/relatorios-financeiros'
+      path: '/relatorios-financeiros'
+      fullPath: '/admin/relatorios-financeiros'
+      preLoaderRoute: typeof AuthenticatedAdminRelatoriosFinanceirosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/relatorios': {
+      id: '/_authenticated/admin/relatorios'
+      path: '/relatorios'
+      fullPath: '/admin/relatorios'
+      preLoaderRoute: typeof AuthenticatedAdminRelatoriosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/produtos': {
+      id: '/_authenticated/admin/produtos'
+      path: '/produtos'
+      fullPath: '/admin/produtos'
+      preLoaderRoute: typeof AuthenticatedAdminProdutosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/pedidos': {
+      id: '/_authenticated/admin/pedidos'
+      path: '/pedidos'
+      fullPath: '/admin/pedidos'
+      preLoaderRoute: typeof AuthenticatedAdminPedidosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/parceiros': {
+      id: '/_authenticated/admin/parceiros'
+      path: '/parceiros'
+      fullPath: '/admin/parceiros'
+      preLoaderRoute: typeof AuthenticatedAdminParceirosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/financeiro': {
+      id: '/_authenticated/admin/financeiro'
+      path: '/financeiro'
+      fullPath: '/admin/financeiro'
+      preLoaderRoute: typeof AuthenticatedAdminFinanceiroRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/disputas': {
+      id: '/_authenticated/admin/disputas'
+      path: '/disputas'
+      fullPath: '/admin/disputas'
+      preLoaderRoute: typeof AuthenticatedAdminDisputasRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/dashboard': {
+      id: '/_authenticated/admin/dashboard'
+      path: '/dashboard'
+      fullPath: '/admin/dashboard'
+      preLoaderRoute: typeof AuthenticatedAdminDashboardRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/comissoes': {
+      id: '/_authenticated/admin/comissoes'
+      path: '/comissoes'
+      fullPath: '/admin/comissoes'
+      preLoaderRoute: typeof AuthenticatedAdminComissoesRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/chat': {
+      id: '/_authenticated/admin/chat'
+      path: '/chat'
+      fullPath: '/admin/chat'
+      preLoaderRoute: typeof AuthenticatedAdminChatRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/bloqueios': {
+      id: '/_authenticated/admin/bloqueios'
+      path: '/bloqueios'
+      fullPath: '/admin/bloqueios'
+      preLoaderRoute: typeof AuthenticatedAdminBloqueiosRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/banners': {
+      id: '/_authenticated/admin/banners'
+      path: '/banners'
+      fullPath: '/admin/banners'
+      preLoaderRoute: typeof AuthenticatedAdminBannersRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/admin/auditoria': {
+      id: '/_authenticated/admin/auditoria'
+      path: '/auditoria'
+      fullPath: '/admin/auditoria'
+      preLoaderRoute: typeof AuthenticatedAdminAuditoriaRouteImport
+      parentRoute: typeof AuthenticatedAdminRouteRoute
+    }
+    '/_authenticated/disputa/abrir/$orderId': {
+      id: '/_authenticated/disputa/abrir/$orderId'
+      path: '/disputa/abrir/$orderId'
+      fullPath: '/disputa/abrir/$orderId'
+      preLoaderRoute: typeof AuthenticatedDisputaAbrirOrderIdRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
   }
 }
 
+interface AuthenticatedAdminRouteRouteChildren {
+  AuthenticatedAdminAuditoriaRoute: typeof AuthenticatedAdminAuditoriaRoute
+  AuthenticatedAdminBannersRoute: typeof AuthenticatedAdminBannersRoute
+  AuthenticatedAdminBloqueiosRoute: typeof AuthenticatedAdminBloqueiosRoute
+  AuthenticatedAdminChatRoute: typeof AuthenticatedAdminChatRoute
+  AuthenticatedAdminComissoesRoute: typeof AuthenticatedAdminComissoesRoute
+  AuthenticatedAdminDashboardRoute: typeof AuthenticatedAdminDashboardRoute
+  AuthenticatedAdminDisputasRoute: typeof AuthenticatedAdminDisputasRoute
+  AuthenticatedAdminFinanceiroRoute: typeof AuthenticatedAdminFinanceiroRoute
+  AuthenticatedAdminParceirosRoute: typeof AuthenticatedAdminParceirosRoute
+  AuthenticatedAdminPedidosRoute: typeof AuthenticatedAdminPedidosRoute
+  AuthenticatedAdminProdutosRoute: typeof AuthenticatedAdminProdutosRoute
+  AuthenticatedAdminRelatoriosRoute: typeof AuthenticatedAdminRelatoriosRoute
+  AuthenticatedAdminRelatoriosFinanceirosRoute: typeof AuthenticatedAdminRelatoriosFinanceirosRoute
+  AuthenticatedAdminSaquesRoute: typeof AuthenticatedAdminSaquesRoute
+  AuthenticatedAdminVendasRoute: typeof AuthenticatedAdminVendasRoute
+  AuthenticatedAdminIndexRoute: typeof AuthenticatedAdminIndexRoute
+}
+
+const AuthenticatedAdminRouteRouteChildren: AuthenticatedAdminRouteRouteChildren =
+  {
+    AuthenticatedAdminAuditoriaRoute: AuthenticatedAdminAuditoriaRoute,
+    AuthenticatedAdminBannersRoute: AuthenticatedAdminBannersRoute,
+    AuthenticatedAdminBloqueiosRoute: AuthenticatedAdminBloqueiosRoute,
+    AuthenticatedAdminChatRoute: AuthenticatedAdminChatRoute,
+    AuthenticatedAdminComissoesRoute: AuthenticatedAdminComissoesRoute,
+    AuthenticatedAdminDashboardRoute: AuthenticatedAdminDashboardRoute,
+    AuthenticatedAdminDisputasRoute: AuthenticatedAdminDisputasRoute,
+    AuthenticatedAdminFinanceiroRoute: AuthenticatedAdminFinanceiroRoute,
+    AuthenticatedAdminParceirosRoute: AuthenticatedAdminParceirosRoute,
+    AuthenticatedAdminPedidosRoute: AuthenticatedAdminPedidosRoute,
+    AuthenticatedAdminProdutosRoute: AuthenticatedAdminProdutosRoute,
+    AuthenticatedAdminRelatoriosRoute: AuthenticatedAdminRelatoriosRoute,
+    AuthenticatedAdminRelatoriosFinanceirosRoute:
+      AuthenticatedAdminRelatoriosFinanceirosRoute,
+    AuthenticatedAdminSaquesRoute: AuthenticatedAdminSaquesRoute,
+    AuthenticatedAdminVendasRoute: AuthenticatedAdminVendasRoute,
+    AuthenticatedAdminIndexRoute: AuthenticatedAdminIndexRoute,
+  }
+
+const AuthenticatedAdminRouteRouteWithChildren =
+  AuthenticatedAdminRouteRoute._addFileChildren(
+    AuthenticatedAdminRouteRouteChildren,
+  )
+
+interface AuthenticatedParceiroRouteRouteChildren {
+  AuthenticatedParceiroAguardandoRoute: typeof AuthenticatedParceiroAguardandoRoute
+  AuthenticatedParceiroAsaasRoute: typeof AuthenticatedParceiroAsaasRoute
+  AuthenticatedParceiroAvaliacoesRoute: typeof AuthenticatedParceiroAvaliacoesRoute
+  AuthenticatedParceiroDashboardRoute: typeof AuthenticatedParceiroDashboardRoute
+  AuthenticatedParceiroDisputasRoute: typeof AuthenticatedParceiroDisputasRoute
+  AuthenticatedParceiroFinanceiroRoute: typeof AuthenticatedParceiroFinanceiroRoute
+  AuthenticatedParceiroFreteRoute: typeof AuthenticatedParceiroFreteRoute
+  AuthenticatedParceiroMensagensRoute: typeof AuthenticatedParceiroMensagensRoute
+  AuthenticatedParceiroMinhaLojaRoute: typeof AuthenticatedParceiroMinhaLojaRoute
+  AuthenticatedParceiroPedidosRoute: typeof AuthenticatedParceiroPedidosRoute
+  AuthenticatedParceiroProdutosRoute: typeof AuthenticatedParceiroProdutosRoute
+  AuthenticatedParceiroIndexRoute: typeof AuthenticatedParceiroIndexRoute
+}
+
+const AuthenticatedParceiroRouteRouteChildren: AuthenticatedParceiroRouteRouteChildren =
+  {
+    AuthenticatedParceiroAguardandoRoute: AuthenticatedParceiroAguardandoRoute,
+    AuthenticatedParceiroAsaasRoute: AuthenticatedParceiroAsaasRoute,
+    AuthenticatedParceiroAvaliacoesRoute: AuthenticatedParceiroAvaliacoesRoute,
+    AuthenticatedParceiroDashboardRoute: AuthenticatedParceiroDashboardRoute,
+    AuthenticatedParceiroDisputasRoute: AuthenticatedParceiroDisputasRoute,
+    AuthenticatedParceiroFinanceiroRoute: AuthenticatedParceiroFinanceiroRoute,
+    AuthenticatedParceiroFreteRoute: AuthenticatedParceiroFreteRoute,
+    AuthenticatedParceiroMensagensRoute: AuthenticatedParceiroMensagensRoute,
+    AuthenticatedParceiroMinhaLojaRoute: AuthenticatedParceiroMinhaLojaRoute,
+    AuthenticatedParceiroPedidosRoute: AuthenticatedParceiroPedidosRoute,
+    AuthenticatedParceiroProdutosRoute: AuthenticatedParceiroProdutosRoute,
+    AuthenticatedParceiroIndexRoute: AuthenticatedParceiroIndexRoute,
+  }
+
+const AuthenticatedParceiroRouteRouteWithChildren =
+  AuthenticatedParceiroRouteRoute._addFileChildren(
+    AuthenticatedParceiroRouteRouteChildren,
+  )
+
+interface AuthenticatedWalletRouteChildren {
+  AuthenticatedWalletPixRoute: typeof AuthenticatedWalletPixRoute
+  AuthenticatedWalletTransactionsRoute: typeof AuthenticatedWalletTransactionsRoute
+}
+
+const AuthenticatedWalletRouteChildren: AuthenticatedWalletRouteChildren = {
+  AuthenticatedWalletPixRoute: AuthenticatedWalletPixRoute,
+  AuthenticatedWalletTransactionsRoute: AuthenticatedWalletTransactionsRoute,
+}
+
+const AuthenticatedWalletRouteWithChildren =
+  AuthenticatedWalletRoute._addFileChildren(AuthenticatedWalletRouteChildren)
+
+interface AuthenticatedRouteRouteChildren {
+  AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
+  AuthenticatedParceiroRouteRoute: typeof AuthenticatedParceiroRouteRouteWithChildren
+  AuthenticatedCarteiraRoute: typeof AuthenticatedCarteiraRoute
+  AuthenticatedSeguindoRoute: typeof AuthenticatedSeguindoRoute
+  AuthenticatedWalletRoute: typeof AuthenticatedWalletRouteWithChildren
+  AuthenticatedDisputaAbrirOrderIdRoute: typeof AuthenticatedDisputaAbrirOrderIdRoute
+}
+
+const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
+  AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
+  AuthenticatedParceiroRouteRoute: AuthenticatedParceiroRouteRouteWithChildren,
+  AuthenticatedCarteiraRoute: AuthenticatedCarteiraRoute,
+  AuthenticatedSeguindoRoute: AuthenticatedSeguindoRoute,
+  AuthenticatedWalletRoute: AuthenticatedWalletRouteWithChildren,
+  AuthenticatedDisputaAbrirOrderIdRoute: AuthenticatedDisputaAbrirOrderIdRoute,
+}
+
+const AuthenticatedRouteRouteWithChildren =
+  AuthenticatedRouteRoute._addFileChildren(AuthenticatedRouteRouteChildren)
+
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthenticatedRouteRoute: AuthenticatedRouteRouteWithChildren,
+  AuthRoute: AuthRoute,
+  CompararRoute: CompararRoute,
+  CompraSeguraRoute: CompraSeguraRoute,
+  ResetPasswordRoute: ResetPasswordRoute,
+  SegurancaGarantiaRoute: SegurancaGarantiaRoute,
+  SejaUmParceiroRoute: SejaUmParceiroRoute,
+  LojaSlugRoute: LojaSlugRoute,
+  ApiPublicMpPixWebhookRoute: ApiPublicMpPixWebhookRoute,
+  ApiPublicMpWebhookRoute: ApiPublicMpWebhookRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
   ._addFileTypes<FileRouteTypes>()
-
-import type { getRouter } from './router.tsx'
-import type { startInstance } from './start.ts'
-declare module '@tanstack/react-start' {
-  interface Register {
-    ssr: true
-    router: Awaited<ReturnType<typeof getRouter>>
-    config: Awaited<ReturnType<typeof startInstance.getOptions>>
-  }
-}
