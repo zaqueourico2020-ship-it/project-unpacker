@@ -14,78 +14,6 @@ export type Database = {
   }
   public: {
     Tables: {
-      admin_wallet: {
-        Row: {
-          available_balance: number
-          id: string
-          updated_at: string
-        }
-        Insert: {
-          available_balance?: number
-          id?: string
-          updated_at?: string
-        }
-        Update: {
-          available_balance?: number
-          id?: string
-          updated_at?: string
-        }
-        Relationships: []
-      }
-      admin_wallet_transactions: {
-        Row: {
-          amount: number
-          created_at: string
-          description: string | null
-          id: string
-          reference_id: string | null
-          type: string
-        }
-        Insert: {
-          amount?: number
-          created_at?: string
-          description?: string | null
-          id?: string
-          reference_id?: string | null
-          type: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string
-          description?: string | null
-          id?: string
-          reference_id?: string | null
-          type?: string
-        }
-        Relationships: []
-      }
-      balance_blocks: {
-        Row: {
-          amount: number
-          created_at: string
-          id: string
-          reason: string | null
-          released: boolean
-          user_id: string
-        }
-        Insert: {
-          amount?: number
-          created_at?: string
-          id?: string
-          reason?: string | null
-          released?: boolean
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          created_at?: string
-          id?: string
-          reason?: string | null
-          released?: boolean
-          user_id?: string
-        }
-        Relationships: []
-      }
       cashback_credits: {
         Row: {
           amount: number
@@ -129,30 +57,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      cashback_levels: {
-        Row: {
-          cashback_rate: number
-          id: string
-          min_spent: number
-          name: string
-          perks: Json | null
-        }
-        Insert: {
-          cashback_rate?: number
-          id?: string
-          min_spent: number
-          name: string
-          perks?: Json | null
-        }
-        Update: {
-          cashback_rate?: number
-          id?: string
-          min_spent?: number
-          name?: string
-          perks?: Json | null
-        }
-        Relationships: []
       }
       chat_conversations: {
         Row: {
@@ -248,170 +152,6 @@ export type Database = {
           },
         ]
       }
-      commission_history: {
-        Row: {
-          base_amount: number
-          commission_amount: number
-          created_at: string
-          id: string
-          partner_id: string
-          partner_net: number
-          partner_order_id: string | null
-          status: string
-        }
-        Insert: {
-          base_amount?: number
-          commission_amount?: number
-          created_at?: string
-          id?: string
-          partner_id: string
-          partner_net?: number
-          partner_order_id?: string | null
-          status?: string
-        }
-        Update: {
-          base_amount?: number
-          commission_amount?: number
-          created_at?: string
-          id?: string
-          partner_id?: string
-          partner_net?: number
-          partner_order_id?: string | null
-          status?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "commission_history_partner_id_fkey"
-            columns: ["partner_id"]
-            isOneToOne: false
-            referencedRelation: "partners"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "commission_history_partner_order_id_fkey"
-            columns: ["partner_order_id"]
-            isOneToOne: false
-            referencedRelation: "partner_orders"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      dispute_messages: {
-        Row: {
-          body: string | null
-          created_at: string
-          dispute_id: string
-          id: string
-          sender_id: string | null
-          sender_role: string | null
-        }
-        Insert: {
-          body?: string | null
-          created_at?: string
-          dispute_id: string
-          id?: string
-          sender_id?: string | null
-          sender_role?: string | null
-        }
-        Update: {
-          body?: string | null
-          created_at?: string
-          dispute_id?: string
-          id?: string
-          sender_id?: string | null
-          sender_role?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "dispute_messages_dispute_id_fkey"
-            columns: ["dispute_id"]
-            isOneToOne: false
-            referencedRelation: "disputes"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      disputes: {
-        Row: {
-          buyer_id: string | null
-          created_at: string
-          description: string | null
-          id: string
-          order_id: string | null
-          partner_id: string | null
-          reason: string | null
-          status: string
-          updated_at: string
-        }
-        Insert: {
-          buyer_id?: string | null
-          created_at?: string
-          description?: string | null
-          id?: string
-          order_id?: string | null
-          partner_id?: string | null
-          reason?: string | null
-          status?: string
-          updated_at?: string
-        }
-        Update: {
-          buyer_id?: string | null
-          created_at?: string
-          description?: string | null
-          id?: string
-          order_id?: string | null
-          partner_id?: string | null
-          reason?: string | null
-          status?: string
-          updated_at?: string
-        }
-        Relationships: [
-          {
-            foreignKeyName: "disputes_order_id_fkey"
-            columns: ["order_id"]
-            isOneToOne: false
-            referencedRelation: "orders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "disputes_partner_id_fkey"
-            columns: ["partner_id"]
-            isOneToOne: false
-            referencedRelation: "partners"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
-      financial_audit_logs: {
-        Row: {
-          action: string
-          actor_id: string | null
-          created_at: string
-          entity: string | null
-          entity_id: string | null
-          id: string
-          meta: Json | null
-        }
-        Insert: {
-          action: string
-          actor_id?: string | null
-          created_at?: string
-          entity?: string | null
-          entity_id?: string | null
-          id?: string
-          meta?: Json | null
-        }
-        Update: {
-          action?: string
-          actor_id?: string | null
-          created_at?: string
-          entity?: string | null
-          entity_id?: string | null
-          id?: string
-          meta?: Json | null
-        }
-        Relationships: []
-      }
       followers: {
         Row: {
           created_at: string
@@ -440,39 +180,6 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
-      }
-      notifications: {
-        Row: {
-          body: string | null
-          created_at: string
-          id: string
-          kind: string
-          link: string | null
-          read: boolean
-          title: string
-          user_id: string
-        }
-        Insert: {
-          body?: string | null
-          created_at?: string
-          id?: string
-          kind: string
-          link?: string | null
-          read?: boolean
-          title: string
-          user_id: string
-        }
-        Update: {
-          body?: string | null
-          created_at?: string
-          id?: string
-          kind?: string
-          link?: string | null
-          read?: boolean
-          title?: string
-          user_id?: string
-        }
-        Relationships: []
       }
       orders: {
         Row: {
@@ -820,10 +527,10 @@ export type Database = {
           cover_url: string | null
           created_at: string
           descricao: string | null
-          direct_checkout_enabled: boolean | null
+          direct_checkout_enabled: boolean
           documento: string
-          email: string
-          endereco: Json
+          email: string | null
+          endereco: Json | null
           id: string
           level_manual: string | null
           logo_url: string | null
@@ -833,11 +540,11 @@ export type Database = {
           reliable_shipping: boolean
           slug: string
           status: string
-          store_banners: Json | null
-          telefone: string
+          store_banners: Json
+          telefone: string | null
           tipo: string
           updated_at: string
-          user_id: string
+          user_id: string | null
           verified: boolean
         }
         Insert: {
@@ -847,10 +554,10 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           descricao?: string | null
-          direct_checkout_enabled?: boolean | null
+          direct_checkout_enabled?: boolean
           documento: string
-          email: string
-          endereco?: Json
+          email?: string | null
+          endereco?: Json | null
           id?: string
           level_manual?: string | null
           logo_url?: string | null
@@ -860,11 +567,11 @@ export type Database = {
           reliable_shipping?: boolean
           slug: string
           status?: string
-          store_banners?: Json | null
-          telefone: string
-          tipo: string
+          store_banners?: Json
+          telefone?: string | null
+          tipo?: string
           updated_at?: string
-          user_id: string
+          user_id?: string | null
           verified?: boolean
         }
         Update: {
@@ -874,10 +581,10 @@ export type Database = {
           cover_url?: string | null
           created_at?: string
           descricao?: string | null
-          direct_checkout_enabled?: boolean | null
+          direct_checkout_enabled?: boolean
           documento?: string
-          email?: string
-          endereco?: Json
+          email?: string | null
+          endereco?: Json | null
           id?: string
           level_manual?: string | null
           logo_url?: string | null
@@ -887,60 +594,12 @@ export type Database = {
           reliable_shipping?: boolean
           slug?: string
           status?: string
-          store_banners?: Json | null
-          telefone?: string
+          store_banners?: Json
+          telefone?: string | null
           tipo?: string
           updated_at?: string
-          user_id?: string
+          user_id?: string | null
           verified?: boolean
-        }
-        Relationships: []
-      }
-      pix_requests: {
-        Row: {
-          amount: number
-          copy_paste: string | null
-          created_at: string
-          id: string
-          kind: string
-          mp_payment_id: string | null
-          pix_key: string | null
-          qr_code: string | null
-          qr_code_base64: string | null
-          raw_response: Json | null
-          status: string
-          updated_at: string
-          user_id: string
-        }
-        Insert: {
-          amount: number
-          copy_paste?: string | null
-          created_at?: string
-          id?: string
-          kind: string
-          mp_payment_id?: string | null
-          pix_key?: string | null
-          qr_code?: string | null
-          qr_code_base64?: string | null
-          raw_response?: Json | null
-          status?: string
-          updated_at?: string
-          user_id: string
-        }
-        Update: {
-          amount?: number
-          copy_paste?: string | null
-          created_at?: string
-          id?: string
-          kind?: string
-          mp_payment_id?: string | null
-          pix_key?: string | null
-          qr_code?: string | null
-          qr_code_base64?: string | null
-          raw_response?: Json | null
-          status?: string
-          updated_at?: string
-          user_id?: string
         }
         Relationships: []
       }
@@ -962,42 +621,6 @@ export type Database = {
           updated_at?: string
           updated_by?: string | null
           value?: Json
-        }
-        Relationships: []
-      }
-      product_reviews: {
-        Row: {
-          comment: string | null
-          created_at: string
-          id: string
-          photos: string[] | null
-          product_id: string
-          rating: number
-          user_id: string
-          user_name: string | null
-          videos: string[] | null
-        }
-        Insert: {
-          comment?: string | null
-          created_at?: string
-          id?: string
-          photos?: string[] | null
-          product_id: string
-          rating: number
-          user_id: string
-          user_name?: string | null
-          videos?: string[] | null
-        }
-        Update: {
-          comment?: string | null
-          created_at?: string
-          id?: string
-          photos?: string[] | null
-          product_id?: string
-          rating?: number
-          user_id?: string
-          user_name?: string | null
-          videos?: string[] | null
         }
         Relationships: []
       }
@@ -1160,51 +783,6 @@ export type Database = {
         }
         Relationships: []
       }
-      sales: {
-        Row: {
-          created_at: string
-          gf_commission: number
-          gross_amount: number
-          id: string
-          order_id: string | null
-          partner_id: string | null
-          partner_net: number
-        }
-        Insert: {
-          created_at?: string
-          gf_commission?: number
-          gross_amount?: number
-          id?: string
-          order_id?: string | null
-          partner_id?: string | null
-          partner_net?: number
-        }
-        Update: {
-          created_at?: string
-          gf_commission?: number
-          gross_amount?: number
-          id?: string
-          order_id?: string | null
-          partner_id?: string | null
-          partner_net?: number
-        }
-        Relationships: [
-          {
-            foreignKeyName: "sales_order_id_fkey"
-            columns: ["order_id"]
-            isOneToOne: false
-            referencedRelation: "orders"
-            referencedColumns: ["id"]
-          },
-          {
-            foreignKeyName: "sales_partner_id_fkey"
-            columns: ["partner_id"]
-            isOneToOne: false
-            referencedRelation: "partners"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       store_state: {
         Row: {
           banners: Json
@@ -1253,50 +831,6 @@ export type Database = {
         }
         Relationships: []
       }
-      wallet_transactions: {
-        Row: {
-          amount: number
-          created_at: string
-          description: string | null
-          id: string
-          reference_id: string | null
-          status: string
-          type: string
-          user_id: string
-          wallet_id: string | null
-        }
-        Insert: {
-          amount: number
-          created_at?: string
-          description?: string | null
-          id?: string
-          reference_id?: string | null
-          status?: string
-          type: string
-          user_id: string
-          wallet_id?: string | null
-        }
-        Update: {
-          amount?: number
-          created_at?: string
-          description?: string | null
-          id?: string
-          reference_id?: string | null
-          status?: string
-          type?: string
-          user_id?: string
-          wallet_id?: string | null
-        }
-        Relationships: [
-          {
-            foreignKeyName: "wallet_transactions_wallet_id_fkey"
-            columns: ["wallet_id"]
-            isOneToOne: false
-            referencedRelation: "wallets"
-            referencedColumns: ["id"]
-          },
-        ]
-      }
       wallets: {
         Row: {
           available_balance: number
@@ -1342,10 +876,6 @@ export type Database = {
           slug: string
         }[]
       }
-      decrement_partner_stock: {
-        Args: { _id: string; _qty: number }
-        Returns: undefined
-      }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
@@ -1353,10 +883,9 @@ export type Database = {
         }
         Returns: boolean
       }
-      unaccent: { Args: { "": string }; Returns: string }
     }
     Enums: {
-      app_role: "admin" | "partner" | "customer" | "owner" | "user"
+      app_role: "admin" | "owner" | "partner" | "user"
     }
     CompositeTypes: {
       [_ in never]: never
@@ -1484,7 +1013,7 @@ export type CompositeTypes<
 export const Constants = {
   public: {
     Enums: {
-      app_role: ["admin", "partner", "customer", "owner", "user"],
+      app_role: ["admin", "owner", "partner", "user"],
     },
   },
 } as const
