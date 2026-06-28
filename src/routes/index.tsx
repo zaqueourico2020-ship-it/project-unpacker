@@ -660,10 +660,7 @@ function App() {
       });
       if (res.url) {
         setCheckoutOpen(false);
-        const win = window.open(res.url, "_blank");
-        if (!win) {
-          window.top ? (window.top.location.href = res.url) : (window.location.href = res.url);
-        }
+        window.location.assign(res.url);
       } else {
         showToast(res.error || "Erro ao iniciar pagamento");
       }
