@@ -83,7 +83,7 @@ export function ChatThread({ conversationId, title, subtitle, onClose, compact }
       .on(
         "postgres_changes",
         { event: "INSERT", schema: "public", table: "chat_messages", filter: `conversation_id=eq.${conversationId}` },
-        payload => {
+        (payload: { new: any }) => {
           appendMessage(payload.new);
           markRead({ data: { conversationId } }).catch(() => {});
         },

@@ -21,8 +21,8 @@ export function FollowButton({ sellerId, className, compact }: Props) {
   const [authed, setAuthed] = useState(false);
 
   useEffect(() => {
-    supabase.auth.getUser().then(({ data }) => setAuthed(!!data.user));
-    const { data: sub } = supabase.auth.onAuthStateChange((_e, session) => setAuthed(!!session?.user));
+    supabase.auth.getUser().then(({ data }: { data: { user: unknown } }) => setAuthed(!!data.user));
+    const { data: sub } = supabase.auth.onAuthStateChange((_e: string, session: { user?: unknown } | null) => setAuthed(!!session?.user));
     return () => sub.subscription.unsubscribe();
   }, []);
 
