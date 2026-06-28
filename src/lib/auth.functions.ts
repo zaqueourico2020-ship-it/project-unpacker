@@ -52,7 +52,7 @@ export const confirmEmailByAddress = createServerFn({ method: "POST" })
     // Confirma o e-mail diretamente via Admin API (substitui RPC anterior em auth.users).
     const { data: list, error: listErr } = await supabaseAdmin.auth.admin.listUsers();
     if (listErr) throw new Error(listErr.message);
-    const user = list.users.find((u) => (u.email || "").toLowerCase() === data.email.toLowerCase());
+    const user = list.users.find((u: { email?: string | null }) => (u.email || "").toLowerCase() === data.email.toLowerCase());
     if (!user) return { ok: true };
     if (!user.email_confirmed_at) {
       const { error } = await supabaseAdmin.auth.admin.updateUserById(user.id, { email_confirm: true });
