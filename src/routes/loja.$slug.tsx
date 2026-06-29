@@ -31,12 +31,32 @@ const BRL = (n: number) =>
 
 type Section = "home" | "categories" | "offers" | "orders" | "account";
 
+const storePageCache = new Map<string, any>();
+
+function loadStoreCart(slug: string): { id: string; qty: number }[] {
+  if (typeof window === "undefined") return [];
+  try {
+    const raw = localStorage.getItem(`gf_store_cart_${slug}`);
+    return raw ? JSON.parse(raw) : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveStoreCart(slug: string, cart: { id: string; qty: number }[]) {
+  if (typeof window === "undefined") return;
+  try { localStorage.setItem(`gf_store_cart_${slug}`, JSON.stringify(cart)); } catch {}
+}
+
 function StorePage() {
   const { slug } = Route.useParams();
   const fn = useServerFn(getStoreBySlug);
   const { data, isLoading } = useQuery({
     queryKey: ["store", slug],
     queryFn: () => fn({ data: { slug } }),
+    placeholderData: () => storePageCache.get(slug),
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
   });
 
   const [search, setSearch] = useState("");
@@ -50,9 +70,21 @@ function StorePage() {
   const [selectedVariantId, setSelectedVariantId] = useState<string | null>(null);
 
   // Local "store cart" — fica isolado do carrinho principal pra não mexer no app
-  const [storeCart, setStoreCart] = useState<{ id: string; qty: number }[]>([]);
+  const [storeCart, setStoreCart] = useState<{ id: string; qty: number }[]>(() => loadStoreCart(slug));
   const [directBuy, setDirectBuy] = useState<{ product: any; qty: number } | null>(null);
   const checkoutFn = useServerFn(createCheckout);
+
+  useEffect(() => {
+    if (data?.store) storePageCache.set(slug, data);
+  }, [data, slug]);
+
+  useEffect(() => {
+    setStoreCart(loadStoreCart(slug));
+  }, [slug]);
+
+  useEffect(() => {
+    saveStoreCart(slug, storeCart);
+  }, [slug, storeCart]);
 
   const products = (data?.products ?? []) as any[];
 

@@ -94,6 +94,7 @@ const LS = {
   orders: "gf_orders",
   settings: "gf_settings",
   addresses: "gf_addresses",
+  partners: "gf_featured_partners",
 };
 
 export type Address = {
@@ -144,7 +145,7 @@ const seedBanners: Banner[] = [
 
 // Module-level caches so navigating away and pressing the browser Back
 // button doesn't blank out the home screen while async loaders re-run.
-let cachedDbProducts: Product[] = [];
+let cachedDbProducts: Product[] = load<Product[]>(LS.products, []);
 let cachedUser: UserData | null = null;
 let cachedUserId: string | null = null;
 let cachedUserType: "lojista" | "pessoa_fisica" | null = null;
@@ -152,6 +153,7 @@ let cachedTab: Tab = "home";
 let cachedCart: CartItem[] | null = null;
 let cachedOrders: Order[] | null = null;
 let cachedActiveCategory: string = "Todas";
+let cachedFeaturedPartners: any[] = load<any[]>(LS.partners, []);
 const seedCoupons: Coupon[] = [
   { code: "BEMVINDO10", discount: 10, type: "percent" },
   { code: "GF20", discount: 20, type: "fixed" },
@@ -244,8 +246,13 @@ function App() {
       const merged: Product[] = [];
       if (!adminRes.error && adminRes.data) merged.push(...adminRes.data.map(mapAdmin));
       if (!partnerRes.error && partnerRes.data) merged.push(...partnerRes.data.map(mapPartner));
-      cachedDbProducts = merged;
-      setDbProducts(merged);
+      if (!adminRes.error || !partnerRes.error) {
+        cachedDbProducts = merged;
+        save(LS.products, merged);
+        setDbProducts(merged);
+      } else if (cachedDbProducts.length) {
+        setDbProducts(cachedDbProducts);
+      }
     };
     load();
     const ch = supabase
@@ -311,6 +318,27 @@ function App() {
   const navigate = useNavigate();
   const activatePartner = useServerFn(activatePartnerSelf);
   const [partnerActivating, setPartnerActivating] = useState(false);
+  const signOutToLogin = useCallback(async () => {
+    setDrawerOpen(false);
+    try {
+      await Promise.race([
+        supabase.auth.signOut({ scope: "local" } as any),
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]);
+    } catch {}
+    try { localStorage.removeItem(LS.user); } catch {}
+    cachedUser = null;
+    cachedUserId = null;
+    cachedUserType = null;
+    cachedTab = "home";
+    setUser(null);
+    setUserId(null);
+    setUserType(null);
+    setIsOwner(false);
+    setIsPartner(false);
+    setTab("home");
+    navigate({ to: "/auth", replace: true });
+  }, [navigate]);
   useEffect(() => {
     const check = async () => {
       const { data } = await supabase.auth.getUser();
@@ -910,18 +938,7 @@ function App() {
             {/* Logout + install */}
             <div className="px-2 pb-2 border-t border-white/5 pt-2">
               <button
-                onClick={() => {
-                  if (confirm("Sair da conta?")) {
-                    (async () => {
-                      try {
-                        const { supabase } = await import("@/integrations/supabase/client");
-                        await supabase.auth.signOut();
-                      } catch {}
-                      localStorage.removeItem(LS.user);
-                      window.location.href = "/auth";
-                    })();
-                  }
-                }}
+                onClick={signOutToLogin}
                 className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-red-400 hover:bg-white/5"
               >
                 <LogOut className="h-5 w-5" /> <span className="flex-1 text-left font-medium">Sair</span>
@@ -1318,6 +1335,7 @@ function App() {
           showToast={showToast}
           isOwner={isOwner}
           onGoAdmin={() => navigate({ to: "/admin/dashboard" })}
+          onSignOut={signOutToLogin}
         />
       )}
 
@@ -2167,7 +2185,7 @@ function WalletInline() {
   );
 }
 
-function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, onGoFavorites, onGoCashback, onGoNotifications, cashbackAvailable, unreadNotifs, showToast, isOwner, onGoAdmin }: {
+function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, onGoFavorites, onGoCashback, onGoNotifications, cashbackAvailable, unreadNotifs, showToast, isOwner, onGoAdmin, onSignOut }: {
   user: UserData; setUser: (u: UserData | null) => void;
   orders: Order[]; products: Product[];
   onOpenProduct: (p: Product) => void;
@@ -2180,6 +2198,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
   showToast: (m: string) => void;
   isOwner?: boolean;
   onGoAdmin?: () => void;
+  onSignOut: () => void | Promise<void>;
 }) {
   const fileRef = useRef<HTMLInputElement>(null);
   const totalSpent = orders.reduce((s, o) => s + o.total, 0);
@@ -2202,15 +2221,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
 
   const defaultAvatar = `https://api.dicebear.com/7.x/initials/svg?seed=${encodeURIComponent(user.name)}&backgroundColor=06b6d4`;
 
-  const signOut = async () => {
-    if (!confirm("Deseja sair da conta?")) return;
-    try {
-      const { supabase } = await import("@/integrations/supabase/client");
-      await supabase.auth.signOut();
-    } catch {}
-    localStorage.removeItem(LS.user);
-    window.location.href = "/auth";
-  };
+  const signOut = () => { void onSignOut(); };
 
   return (
     <div className="pb-6">
@@ -3389,8 +3400,37 @@ function CashbackAdmin({ showToast }: { showToast: (m: string) => void }) {
 
 function LojasParceirasStrip() {
   const fn = useServerFn(listFeaturedPartners);
-  const [partners, setPartners] = useState<any[]>([]);
-  useEffect(() => { fn({}).then((r: any) => setPartners(r.partners ?? [])).catch(() => {}); }, [fn]);
+  const [partners, setPartners] = useState<any[]>(() => cachedFeaturedPartners);
+  useEffect(() => {
+    let cancelled = false;
+    fn({})
+      .then((r: any) => {
+        if (cancelled) return;
+        const next = r.partners ?? [];
+        cachedFeaturedPartners = next;
+        save(LS.partners, next);
+        setPartners(next);
+      })
+      .catch(async () => {
+        if (cancelled) return;
+        try {
+          const { data, error } = await (supabase as any)
+            .from("partners")
+            .select("id, slug, nome_loja, logo_url, banner_url")
+            .eq("status", "approved")
+            .order("created_at", { ascending: false })
+            .limit(12);
+          if (!error && data) {
+            cachedFeaturedPartners = data;
+            save(LS.partners, data);
+            setPartners(data);
+            return;
+          }
+        } catch {}
+        if (cachedFeaturedPartners.length) setPartners(cachedFeaturedPartners);
+      });
+    return () => { cancelled = true; };
+  }, [fn]);
   if (!partners.length) return null;
   return (
     <section className="mb-5">
@@ -3400,7 +3440,7 @@ function LojasParceirasStrip() {
       </div>
       <div className="flex gap-3 overflow-x-auto pb-2">
         {partners.map((p) => (
-          <a key={p.id} href={`/loja/${p.slug}`} className="shrink-0 w-32 rounded-lg bg-[#0f1d32] border border-cyan-500/20 overflow-hidden hover:border-cyan-400">
+          <Link key={p.id} to="/loja/$slug" params={{ slug: p.slug }} className="shrink-0 w-32 rounded-lg bg-[#0f1d32] border border-cyan-500/20 overflow-hidden hover:border-cyan-400">
             <div className="h-16 bg-cyan-500/10" style={p.banner_url ? { backgroundImage: `url(${p.banner_url})`, backgroundSize: "cover", backgroundPosition: "center" } : {}} />
             <div className="p-2 flex items-center gap-2">
               <div className="h-8 w-8 rounded-full bg-[#162340] overflow-hidden shrink-0">
@@ -3408,7 +3448,7 @@ function LojasParceirasStrip() {
               </div>
               <span className="text-[11px] font-semibold text-slate-100 line-clamp-2">{p.nome_loja}</span>
             </div>
-          </a>
+          </Link>
         ))}
       </div>
     </section>
