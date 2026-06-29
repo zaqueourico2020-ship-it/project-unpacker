@@ -55,6 +55,8 @@ function StorePage() {
     queryKey: ["store", slug],
     queryFn: () => fn({ data: { slug } }),
     placeholderData: () => storePageCache.get(slug),
+    staleTime: 5 * 60 * 1000,
+    gcTime: 30 * 60 * 1000,
   });
 
   const [search, setSearch] = useState("");

@@ -94,6 +94,7 @@ const LS = {
   orders: "gf_orders",
   settings: "gf_settings",
   addresses: "gf_addresses",
+  partners: "gf_featured_partners",
 };
 
 export type Address = {
@@ -144,7 +145,7 @@ const seedBanners: Banner[] = [
 
 // Module-level caches so navigating away and pressing the browser Back
 // button doesn't blank out the home screen while async loaders re-run.
-let cachedDbProducts: Product[] = [];
+let cachedDbProducts: Product[] = load<Product[]>(LS.products, []);
 let cachedUser: UserData | null = null;
 let cachedUserId: string | null = null;
 let cachedUserType: "lojista" | "pessoa_fisica" | null = null;
@@ -152,7 +153,7 @@ let cachedTab: Tab = "home";
 let cachedCart: CartItem[] | null = null;
 let cachedOrders: Order[] | null = null;
 let cachedActiveCategory: string = "Todas";
-let cachedFeaturedPartners: any[] = [];
+let cachedFeaturedPartners: any[] = load<any[]>(LS.partners, []);
 const seedCoupons: Coupon[] = [
   { code: "BEMVINDO10", discount: 10, type: "percent" },
   { code: "GF20", discount: 20, type: "fixed" },
@@ -247,6 +248,7 @@ function App() {
       if (!partnerRes.error && partnerRes.data) merged.push(...partnerRes.data.map(mapPartner));
       if (!adminRes.error || !partnerRes.error) {
         cachedDbProducts = merged;
+        save(LS.products, merged);
         setDbProducts(merged);
       } else if (cachedDbProducts.length) {
         setDbProducts(cachedDbProducts);
@@ -3406,10 +3408,26 @@ function LojasParceirasStrip() {
         if (cancelled) return;
         const next = r.partners ?? [];
         cachedFeaturedPartners = next;
+        save(LS.partners, next);
         setPartners(next);
       })
-      .catch(() => {
-        if (!cancelled && cachedFeaturedPartners.length) setPartners(cachedFeaturedPartners);
+      .catch(async () => {
+        if (cancelled) return;
+        try {
+          const { data, error } = await (supabase as any)
+            .from("partners")
+            .select("id, slug, nome_loja, logo_url, banner_url")
+            .eq("status", "approved")
+            .order("created_at", { ascending: false })
+            .limit(12);
+          if (!error && data) {
+            cachedFeaturedPartners = data;
+            save(LS.partners, data);
+            setPartners(data);
+            return;
+          }
+        } catch {}
+        if (cachedFeaturedPartners.length) setPartners(cachedFeaturedPartners);
       });
     return () => { cancelled = true; };
   }, [fn]);
