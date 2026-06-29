@@ -49,7 +49,12 @@ const NAV = [
 function AdminLayout() {
   const navigate = useNavigate();
   const signOut = async () => {
-    await supabase.auth.signOut();
+    try {
+      await Promise.race([
+        supabase.auth.signOut({ scope: "local" } as any),
+        new Promise((resolve) => setTimeout(resolve, 1500)),
+      ]);
+    } catch {}
     navigate({ to: "/auth", replace: true });
   };
   return (
