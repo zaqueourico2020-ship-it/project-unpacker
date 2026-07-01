@@ -358,8 +358,15 @@ function StorePage() {
           </section>
         )}
 
-
-
+        {s.banner_url && (
+          <section className="px-3 pt-3">
+            <img
+              src={s.banner_url}
+              alt="Banner da loja"
+              className="w-full rounded-xl object-cover ring-1 ring-cyan-500/20"
+            />
+          </section>
+        )}
 
         {/* Banners do vendedor */}
         {Array.isArray(s.store_banners) && s.store_banners.length > 0 && (
