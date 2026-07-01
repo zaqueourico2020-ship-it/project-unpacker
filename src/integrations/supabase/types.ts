@@ -58,6 +58,30 @@ export type Database = {
           },
         ]
       }
+      cashback_levels: {
+        Row: {
+          created_at: string
+          id: string
+          min_spent: number
+          name: string
+          percent: number
+        }
+        Insert: {
+          created_at?: string
+          id?: string
+          min_spent?: number
+          name: string
+          percent?: number
+        }
+        Update: {
+          created_at?: string
+          id?: string
+          min_spent?: number
+          name?: string
+          percent?: number
+        }
+        Relationships: []
+      }
       chat_conversations: {
         Row: {
           buyer_id: string
@@ -180,6 +204,39 @@ export type Database = {
             referencedColumns: ["id"]
           },
         ]
+      }
+      notifications: {
+        Row: {
+          body: string | null
+          created_at: string
+          id: string
+          kind: string
+          link: string | null
+          read_at: string | null
+          title: string
+          user_id: string
+        }
+        Insert: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind: string
+          link?: string | null
+          read_at?: string | null
+          title: string
+          user_id: string
+        }
+        Update: {
+          body?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          link?: string | null
+          read_at?: string | null
+          title?: string
+          user_id?: string
+        }
+        Relationships: []
       }
       orders: {
         Row: {
@@ -603,6 +660,54 @@ export type Database = {
         }
         Relationships: []
       }
+      pix_requests: {
+        Row: {
+          amount: number
+          copy_paste: string | null
+          created_at: string
+          id: string
+          kind: string
+          mp_payment_id: string | null
+          pix_key: string | null
+          qr_code: string | null
+          qr_code_base64: string | null
+          raw_response: Json | null
+          status: string
+          updated_at: string
+          user_id: string
+        }
+        Insert: {
+          amount: number
+          copy_paste?: string | null
+          created_at?: string
+          id?: string
+          kind: string
+          mp_payment_id?: string | null
+          pix_key?: string | null
+          qr_code?: string | null
+          qr_code_base64?: string | null
+          raw_response?: Json | null
+          status?: string
+          updated_at?: string
+          user_id: string
+        }
+        Update: {
+          amount?: number
+          copy_paste?: string | null
+          created_at?: string
+          id?: string
+          kind?: string
+          mp_payment_id?: string | null
+          pix_key?: string | null
+          qr_code?: string | null
+          qr_code_base64?: string | null
+          raw_response?: Json | null
+          status?: string
+          updated_at?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
       platform_settings: {
         Row: {
           key: string
@@ -831,6 +936,50 @@ export type Database = {
         }
         Relationships: []
       }
+      wallet_transactions: {
+        Row: {
+          amount: number
+          created_at: string
+          description: string | null
+          id: string
+          reference_id: string | null
+          status: string
+          type: string
+          user_id: string
+          wallet_id: string
+        }
+        Insert: {
+          amount: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          reference_id?: string | null
+          status?: string
+          type: string
+          user_id: string
+          wallet_id: string
+        }
+        Update: {
+          amount?: number
+          created_at?: string
+          description?: string | null
+          id?: string
+          reference_id?: string | null
+          status?: string
+          type?: string
+          user_id?: string
+          wallet_id?: string
+        }
+        Relationships: [
+          {
+            foreignKeyName: "wallet_transactions_wallet_id_fkey"
+            columns: ["wallet_id"]
+            isOneToOne: false
+            referencedRelation: "wallets"
+            referencedColumns: ["id"]
+          },
+        ]
+      }
       wallets: {
         Row: {
           available_balance: number
@@ -882,6 +1031,14 @@ export type Database = {
           _user_id: string
         }
         Returns: boolean
+      }
+      request_pix_withdraw_secure: {
+        Args: { _amount: number; _pix_key: string }
+        Returns: string
+      }
+      transfer_balance: {
+        Args: { _amount: number; _note?: string; _to_user: string }
+        Returns: string
       }
     }
     Enums: {
