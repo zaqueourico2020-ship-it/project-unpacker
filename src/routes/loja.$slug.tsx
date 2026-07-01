@@ -358,36 +358,15 @@ function StorePage() {
           </section>
         )}
 
-        {/* Hero banner */}
-        <section className="px-3 pt-3">
-          <div
-            className="relative overflow-hidden rounded-xl bg-gradient-to-br from-[#0b223d] via-[#0a1628] to-[#11304f] p-5 ring-1 ring-cyan-500/20"
-            style={
-              s.banner_url
-                ? {
-                    backgroundImage: `linear-gradient(rgba(10,22,40,0.7), rgba(10,22,40,0.85)), url(${s.banner_url})`,
-                    backgroundSize: "cover",
-                    backgroundPosition: "center",
-                  }
-                : {}
-            }
-          >
-            <h2 className="text-2xl font-extrabold leading-tight">
-              <span className="text-white">PRODUTOS DE</span>
-              <br />
-              <span className="text-orange-400">ALTA PERFORMANCE</span>
-            </h2>
-            <p className="mt-1 text-xs text-slate-300">
-              Qualidade • Confiança • Resultado
-            </p>
-            <button
-              onClick={() => setSection("categories")}
-              className="mt-3 rounded-md border border-cyan-400/60 bg-transparent px-4 py-1.5 text-xs font-semibold text-cyan-300 hover:bg-cyan-400/10"
-            >
-              Ver produtos
-            </button>
-          </div>
-        </section>
+        {s.banner_url && (
+          <section className="px-3 pt-3">
+            <img
+              src={s.banner_url}
+              alt="Banner da loja"
+              className="w-full rounded-xl object-cover ring-1 ring-cyan-500/20"
+            />
+          </section>
+        )}
 
         {/* Banners do vendedor */}
         {Array.isArray(s.store_banners) && s.store_banners.length > 0 && (
