@@ -31,12 +31,15 @@ function AuthPage() {
   const [msg, setMsg] = useState<{ kind: "ok" | "err"; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
+  const initialRef =
+    typeof window !== "undefined" ? (new URLSearchParams(window.location.search).get("ref") || "").toUpperCase() : "";
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     phone: "",
     cnpj: "",
     password: "",
+    referralCode: initialRef,
   });
 
   useEffect(() => {
