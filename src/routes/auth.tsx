@@ -52,7 +52,7 @@ function AuthPage() {
   }, [navigate]);
 
   const reset = () => {
-    setForm({ fullName: "", email: "", phone: "", cnpj: "", password: "" });
+    setForm({ fullName: "", email: "", phone: "", cnpj: "", password: "", referralCode: "" });
     setMsg(null);
   };
 
