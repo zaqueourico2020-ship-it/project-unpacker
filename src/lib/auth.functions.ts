@@ -8,6 +8,7 @@ const SignupInputSchema = z.object({
   fullName: z.string().trim().min(2).max(120),
   phone: z.string().trim().min(10).max(30).refine((value) => value.replace(/\D/g, "").length >= 10, "Telefone inválido"),
   cnpj: z.string().max(30).optional().nullable(),
+  referralCode: z.string().trim().max(20).optional().nullable(),
 });
 
 export const signUpAndConfirm = createServerFn({ method: "POST" })
