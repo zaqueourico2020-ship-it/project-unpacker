@@ -25,6 +25,7 @@ export const signUpAndConfirm = createServerFn({ method: "POST" })
         full_name: data.fullName,
         phone: data.phone,
         cnpj: data.userType === "lojista" ? data.cnpj ?? null : null,
+        referral_code: data.referralCode ? data.referralCode.trim().toUpperCase() : null,
       },
     });
 
