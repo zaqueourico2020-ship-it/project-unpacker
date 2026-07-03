@@ -88,6 +88,7 @@ function AuthPage() {
             fullName,
             phone,
             cnpj: audience === "lojista" ? form.cnpj.trim() : null,
+            referralCode: form.referralCode?.trim() || null,
           },
         });
         const { error: signInError } = await supabase.auth.signInWithPassword({
