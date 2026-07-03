@@ -245,6 +245,20 @@ function AuthPage() {
             </Field>
           )}
 
+          {mode === "signup" && (
+            <Field icon={<Store size={16} />}>
+              <input
+                type="text"
+                value={form.referralCode}
+                onChange={(e) => setForm({ ...form, referralCode: e.target.value.toUpperCase() })}
+                placeholder="Código de indicação (opcional)"
+                maxLength={20}
+                className={inputCls + " uppercase"}
+              />
+            </Field>
+          )}
+
+
           {msg && (
             <p className={`text-xs ${msg.kind === "ok" ? "text-emerald-300" : "text-red-300"}`}>{msg.text}</p>
           )}
