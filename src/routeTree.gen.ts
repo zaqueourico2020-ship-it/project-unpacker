@@ -20,6 +20,7 @@ import { Route as IndexRouteImport } from './routes/index'
 import { Route as LojaSlugRouteImport } from './routes/loja.$slug'
 import { Route as AuthenticatedWalletRouteImport } from './routes/_authenticated/wallet'
 import { Route as AuthenticatedSeguindoRouteImport } from './routes/_authenticated/seguindo'
+import { Route as AuthenticatedIndiqueEGanheRouteImport } from './routes/_authenticated/indique-e-ganhe'
 import { Route as AuthenticatedCarteiraRouteImport } from './routes/_authenticated/carteira'
 import { Route as AuthenticatedParceiroRouteRouteImport } from './routes/_authenticated/parceiro/route'
 import { Route as AuthenticatedAdminRouteRouteImport } from './routes/_authenticated/admin/route'
@@ -111,6 +112,12 @@ const AuthenticatedSeguindoRoute = AuthenticatedSeguindoRouteImport.update({
   path: '/seguindo',
   getParentRoute: () => AuthenticatedRouteRoute,
 } as any)
+const AuthenticatedIndiqueEGanheRoute =
+  AuthenticatedIndiqueEGanheRouteImport.update({
+    id: '/indique-e-ganhe',
+    path: '/indique-e-ganhe',
+    getParentRoute: () => AuthenticatedRouteRoute,
+  } as any)
 const AuthenticatedCarteiraRoute = AuthenticatedCarteiraRouteImport.update({
   id: '/carteira',
   path: '/carteira',
@@ -332,6 +339,7 @@ export interface FileRoutesByFullPath {
   '/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/parceiro': typeof AuthenticatedParceiroRouteRouteWithChildren
   '/carteira': typeof AuthenticatedCarteiraRoute
+  '/indique-e-ganhe': typeof AuthenticatedIndiqueEGanheRoute
   '/seguindo': typeof AuthenticatedSeguindoRoute
   '/wallet': typeof AuthenticatedWalletRouteWithChildren
   '/loja/$slug': typeof LojaSlugRoute
@@ -378,6 +386,7 @@ export interface FileRoutesByTo {
   '/seguranca-garantia': typeof SegurancaGarantiaRoute
   '/seja-um-parceiro': typeof SejaUmParceiroRoute
   '/carteira': typeof AuthenticatedCarteiraRoute
+  '/indique-e-ganhe': typeof AuthenticatedIndiqueEGanheRoute
   '/seguindo': typeof AuthenticatedSeguindoRoute
   '/wallet': typeof AuthenticatedWalletRouteWithChildren
   '/loja/$slug': typeof LojaSlugRoute
@@ -428,6 +437,7 @@ export interface FileRoutesById {
   '/_authenticated/admin': typeof AuthenticatedAdminRouteRouteWithChildren
   '/_authenticated/parceiro': typeof AuthenticatedParceiroRouteRouteWithChildren
   '/_authenticated/carteira': typeof AuthenticatedCarteiraRoute
+  '/_authenticated/indique-e-ganhe': typeof AuthenticatedIndiqueEGanheRoute
   '/_authenticated/seguindo': typeof AuthenticatedSeguindoRoute
   '/_authenticated/wallet': typeof AuthenticatedWalletRouteWithChildren
   '/loja/$slug': typeof LojaSlugRoute
@@ -478,6 +488,7 @@ export interface FileRouteTypes {
     | '/admin'
     | '/parceiro'
     | '/carteira'
+    | '/indique-e-ganhe'
     | '/seguindo'
     | '/wallet'
     | '/loja/$slug'
@@ -524,6 +535,7 @@ export interface FileRouteTypes {
     | '/seguranca-garantia'
     | '/seja-um-parceiro'
     | '/carteira'
+    | '/indique-e-ganhe'
     | '/seguindo'
     | '/wallet'
     | '/loja/$slug'
@@ -573,6 +585,7 @@ export interface FileRouteTypes {
     | '/_authenticated/admin'
     | '/_authenticated/parceiro'
     | '/_authenticated/carteira'
+    | '/_authenticated/indique-e-ganhe'
     | '/_authenticated/seguindo'
     | '/_authenticated/wallet'
     | '/loja/$slug'
@@ -702,6 +715,13 @@ declare module '@tanstack/react-router' {
       path: '/seguindo'
       fullPath: '/seguindo'
       preLoaderRoute: typeof AuthenticatedSeguindoRouteImport
+      parentRoute: typeof AuthenticatedRouteRoute
+    }
+    '/_authenticated/indique-e-ganhe': {
+      id: '/_authenticated/indique-e-ganhe'
+      path: '/indique-e-ganhe'
+      fullPath: '/indique-e-ganhe'
+      preLoaderRoute: typeof AuthenticatedIndiqueEGanheRouteImport
       parentRoute: typeof AuthenticatedRouteRoute
     }
     '/_authenticated/carteira': {
@@ -1057,6 +1077,7 @@ interface AuthenticatedRouteRouteChildren {
   AuthenticatedAdminRouteRoute: typeof AuthenticatedAdminRouteRouteWithChildren
   AuthenticatedParceiroRouteRoute: typeof AuthenticatedParceiroRouteRouteWithChildren
   AuthenticatedCarteiraRoute: typeof AuthenticatedCarteiraRoute
+  AuthenticatedIndiqueEGanheRoute: typeof AuthenticatedIndiqueEGanheRoute
   AuthenticatedSeguindoRoute: typeof AuthenticatedSeguindoRoute
   AuthenticatedWalletRoute: typeof AuthenticatedWalletRouteWithChildren
   AuthenticatedDisputaAbrirOrderIdRoute: typeof AuthenticatedDisputaAbrirOrderIdRoute
@@ -1066,6 +1087,7 @@ const AuthenticatedRouteRouteChildren: AuthenticatedRouteRouteChildren = {
   AuthenticatedAdminRouteRoute: AuthenticatedAdminRouteRouteWithChildren,
   AuthenticatedParceiroRouteRoute: AuthenticatedParceiroRouteRouteWithChildren,
   AuthenticatedCarteiraRoute: AuthenticatedCarteiraRoute,
+  AuthenticatedIndiqueEGanheRoute: AuthenticatedIndiqueEGanheRoute,
   AuthenticatedSeguindoRoute: AuthenticatedSeguindoRoute,
   AuthenticatedWalletRoute: AuthenticatedWalletRouteWithChildren,
   AuthenticatedDisputaAbrirOrderIdRoute: AuthenticatedDisputaAbrirOrderIdRoute,

@@ -31,12 +31,15 @@ function AuthPage() {
   const [msg, setMsg] = useState<{ kind: "ok" | "err"; text: string } | null>(null);
   const [showPassword, setShowPassword] = useState(false);
 
+  const initialRef =
+    typeof window !== "undefined" ? (new URLSearchParams(window.location.search).get("ref") || "").toUpperCase() : "";
   const [form, setForm] = useState({
     fullName: "",
     email: "",
     phone: "",
     cnpj: "",
     password: "",
+    referralCode: initialRef,
   });
 
   useEffect(() => {
@@ -49,7 +52,7 @@ function AuthPage() {
   }, [navigate]);
 
   const reset = () => {
-    setForm({ fullName: "", email: "", phone: "", cnpj: "", password: "" });
+    setForm({ fullName: "", email: "", phone: "", cnpj: "", password: "", referralCode: "" });
     setMsg(null);
   };
 
@@ -85,6 +88,7 @@ function AuthPage() {
             fullName,
             phone,
             cnpj: audience === "lojista" ? form.cnpj.trim() : null,
+            referralCode: form.referralCode?.trim() || null,
           },
         });
         const { error: signInError } = await supabase.auth.signInWithPassword({
@@ -240,6 +244,20 @@ function AuthPage() {
               />
             </Field>
           )}
+
+          {mode === "signup" && (
+            <Field icon={<Store size={16} />}>
+              <input
+                type="text"
+                value={form.referralCode}
+                onChange={(e) => setForm({ ...form, referralCode: e.target.value.toUpperCase() })}
+                placeholder="Código de indicação (opcional)"
+                maxLength={20}
+                className={inputCls + " uppercase"}
+              />
+            </Field>
+          )}
+
 
           {msg && (
             <p className={`text-xs ${msg.kind === "ok" ? "text-emerald-300" : "text-red-300"}`}>{msg.text}</p>
