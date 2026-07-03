@@ -888,6 +888,72 @@ export type Database = {
         }
         Relationships: []
       }
+      referral_codes: {
+        Row: {
+          code: string
+          created_at: string
+          id: string
+          user_id: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          id?: string
+          user_id: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          id?: string
+          user_id?: string
+        }
+        Relationships: []
+      }
+      referrals: {
+        Row: {
+          code: string
+          created_at: string
+          first_order_at: string | null
+          first_order_id: string | null
+          first_order_total: number | null
+          id: string
+          referred_id: string
+          referrer_id: string
+          reward_amount: number
+          rewarded_at: string | null
+          status: string
+          updated_at: string
+        }
+        Insert: {
+          code: string
+          created_at?: string
+          first_order_at?: string | null
+          first_order_id?: string | null
+          first_order_total?: number | null
+          id?: string
+          referred_id: string
+          referrer_id: string
+          reward_amount?: number
+          rewarded_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Update: {
+          code?: string
+          created_at?: string
+          first_order_at?: string | null
+          first_order_id?: string | null
+          first_order_total?: number | null
+          id?: string
+          referred_id?: string
+          referrer_id?: string
+          reward_amount?: number
+          rewarded_at?: string | null
+          status?: string
+          updated_at?: string
+        }
+        Relationships: []
+      }
       store_state: {
         Row: {
           banners: Json
@@ -1025,12 +1091,18 @@ export type Database = {
           slug: string
         }[]
       }
+      apply_referral_code: { Args: { _code: string }; Returns: string }
+      gen_referral_code: { Args: { _user_id: string }; Returns: string }
       has_role: {
         Args: {
           _role: Database["public"]["Enums"]["app_role"]
           _user_id: string
         }
         Returns: boolean
+      }
+      process_referral_reward: {
+        Args: { _order_id: string }
+        Returns: undefined
       }
       request_pix_withdraw_secure: {
         Args: { _amount: number; _pix_key: string }
