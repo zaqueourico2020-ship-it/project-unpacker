@@ -1019,7 +1019,8 @@ function App() {
 
       {/* HOME */}
       {tab === "home" && (
-        <div className="pt-3">
+        <div className="pt-3 bg-white text-slate-900 min-h-screen">
+
           <div className="px-4">
             <BannerCarousel banners={banners} />
           </div>
