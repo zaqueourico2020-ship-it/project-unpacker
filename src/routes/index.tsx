@@ -14,7 +14,7 @@ import {
   BadgeCheck, SlidersHorizontal, Truck, ShieldCheck, Headphones,
 } from "lucide-react";
 import { useServerFn } from "@tanstack/react-start";
-import logo from "@/assets/grupo-gf-logo.png";
+import logo from "@/assets/gf-shield-logo.png";
 import { createCheckout } from "@/lib/checkout.functions";
 import { getWallet } from "@/lib/wallet.functions";
 import {
