@@ -2313,6 +2313,11 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
           <MenuRow icon={Wallet} label="Minha Carteira GF"
             desc="Saldo, PIX, extrato e saques" onClick={() => {}} />
         </Link>
+        <Link to="/indique-e-ganhe" className="block">
+          <MenuRow icon={Gift} label="Indique e Ganhe"
+            desc="Convide amigos e ganhe R$ 5 na Carteira GF"
+            onClick={() => {}} />
+        </Link>
         <Link to="/seja-um-parceiro" className="block">
           <MenuRow icon={Store} label="Seja um Parceiro GF"
             desc="Cadastre sua loja e venda na plataforma"
