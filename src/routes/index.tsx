@@ -967,138 +967,119 @@ function App() {
         </div>
       )}
 
-      {/* Header (estilo loja parceira) */}
-      <header className="sticky top-0 z-50 backdrop-blur-md border-b border-cyan-500/10" style={{ background: "rgba(10,22,40,0.95)" }}>
-        <div className="flex items-center gap-2 px-3 py-2.5">
-          <button
-            onClick={() => setDrawerOpen(true)}
-            className="rounded-md p-2 hover:bg-white/10"
-            aria-label="Abrir menu"
-          >
+      {/* Header premium navy + gold */}
+      <header className="sticky top-0 z-50 border-b border-[#c9a84c]/30 shadow-lg" style={{ background: "linear-gradient(180deg,#0b1a3a 0%,#0f1f45 100%)" }}>
+        <div className="flex items-center gap-2 px-3 py-3">
+          <button onClick={() => setDrawerOpen(true)} className="rounded-md p-2 text-[#f0d78c] hover:bg-white/10" aria-label="Abrir menu">
             <Menu className="h-5 w-5" />
           </button>
           <button onClick={() => setTab("home")} className="flex items-center gap-2 min-w-0">
-            <div className="h-10 w-10 shrink-0 overflow-hidden rounded-lg bg-white/5 p-0.5">
-              <img src={logo} alt="Grupo GF" className="h-full w-full object-contain" />
+            <div className="h-11 w-11 shrink-0 overflow-hidden">
+              <img src={logo} alt="Grupo GF" className="h-full w-full object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
             </div>
             <div className="min-w-0 leading-tight text-left">
-              <p className="truncate text-[15px] font-extrabold tracking-wide uppercase text-white">
-                {settings.storeName}
+              <p className="truncate text-[15px] font-extrabold tracking-[0.14em] uppercase" style={{ color: "#f0d78c", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>
+                Grupo GF Varejista
               </p>
-              <p className="flex items-center gap-1 text-[11px] font-semibold text-emerald-400">
-                <BadgeCheck className="h-3.5 w-3.5" /> Marketplace Oficial
+              <p className="flex items-center gap-1 text-[10px] font-semibold text-[#c9a84c]/80 tracking-wider uppercase">
+                <BadgeCheck className="h-3 w-3" /> Marketplace Oficial
               </p>
             </div>
           </button>
-
           <div className="ml-auto flex items-center gap-1">
-            <button
-              onClick={() => setTab("cart")}
-              className="relative rounded-md p-2 hover:bg-white/10"
-            >
+            <button onClick={() => setTab("cart")} className="relative rounded-md p-2 text-[#f0d78c] hover:bg-white/10">
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-orange-500 px-1 text-[10px] font-bold text-white">
-                  {cartCount}
-                </span>
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-[#c9a84c] px-1 text-[10px] font-bold text-[#0b1a3a]">{cartCount}</span>
               )}
             </button>
-            <button
-              onClick={() => setTab("notifications")}
-              className="relative rounded-md p-2 hover:bg-white/10"
-            >
+            <button onClick={() => setTab("notifications")} className="relative rounded-md p-2 text-[#f0d78c] hover:bg-white/10">
               <Bell className="h-5 w-5" />
               {unreadNotifs > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">
-                  {unreadNotifs}
-                </span>
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">{unreadNotifs}</span>
               )}
             </button>
           </div>
         </div>
-
-        {/* Search + Filtros */}
-        <div className="px-3 pb-2.5">
+        <div className="px-3 pb-3">
           <div className="relative flex items-center gap-2">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-slate-500" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#c9a84c]" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
-                placeholder="Buscar produtos, marcas e muito mais..."
-                className="w-full rounded-xl bg-[#0f1d32] py-2.5 pl-9 pr-3 text-sm ring-1 ring-cyan-500/15 placeholder:text-slate-500 focus:outline-none focus:ring-cyan-400"
+                placeholder="Explore as Ofertas Únicas do Grupo GF..."
+                className="w-full rounded-full bg-white py-2.5 pl-9 pr-10 text-sm text-slate-800 ring-1 ring-[#c9a84c]/40 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#c9a84c]"
               />
+              <Camera className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#c9a84c]" />
             </div>
-            <button
-              onClick={() => setShowFilters((v) => !v)}
-              className="flex items-center gap-1.5 rounded-xl px-3 py-2.5 text-sm font-semibold text-cyan-300 hover:bg-white/5"
-            >
-              <SlidersHorizontal className="h-4 w-4" /> Filtros
-            </button>
           </div>
         </div>
       </header>
 
-
-
-
-
       {/* HOME */}
       {tab === "home" && (
-        <div className="px-4 pt-4">
-          {/* Welcome Banner */}
-          <div className="mb-3 rounded-2xl overflow-hidden relative border border-blue-500/30 bg-gradient-to-r from-blue-950 via-slate-900 to-blue-900 p-4 shadow-lg">
-            <div className="absolute inset-0 opacity-20 bg-[radial-gradient(circle_at_20%_20%,rgba(59,130,246,0.4),transparent_60%)]" />
-            <div className="relative flex items-center gap-3">
-              <img src={logo} alt="Grupo GF" className="h-12 w-12 rounded-lg bg-white/5 p-1" />
-              <div className="min-w-0">
-                <div className="text-xs text-blue-300 font-medium">Bem-vindo(a) à</div>
-                <div className="text-base font-bold text-white truncate">GRUPO GF REDE VAREJISTA</div>
-                <div className="text-xs text-slate-300">Ofertas, qualidade e entrega rápida</div>
-              </div>
-            </div>
+        <div className="pt-3">
+          <div className="px-4">
+            <BannerCarousel banners={banners} />
           </div>
 
-          <BannerCarousel banners={banners} />
+          <div className="mt-4 flex gap-2.5 overflow-x-auto px-4 pb-2">
+            {[
+              { icon: Tag, label: "Ofertas Únicas" },
+              { icon: BadgeCheck, label: "Clube GF" },
+              { icon: Gift, label: "Cesta GF" },
+              { icon: Store, label: "Ofertas Relâmpago" },
+              { icon: DollarSign, label: "Cashback" },
+            ].map((q, i) => (
+              <div key={i} className="shrink-0 w-[86px] rounded-2xl bg-white shadow-[0_2px_10px_-4px_rgba(11,26,58,0.15)] border border-[#c9a84c]/25 p-2 flex flex-col items-center gap-1.5">
+                <div className="h-11 w-11 rounded-full grid place-items-center" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>
+                  <q.icon className="h-5 w-5 text-[#0b1a3a]" />
+                </div>
+                <span className="text-[10px] font-semibold text-center text-slate-700 leading-tight">{q.label}</span>
+              </div>
+            ))}
+          </div>
 
-          {/* Baixar app + Seja parceiro (compactos) */}
-          <div className="flex gap-2 my-3">
-            <div className="flex-1 min-w-0">
-              <InstallAppButton />
-            </div>
-            <Link
-              to="/seja-um-parceiro"
-              className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-white shadow-md hover:opacity-90 whitespace-nowrap"
-              style={{ background: "linear-gradient(135deg,#0a4fe3,#ff6a00)" }}
-            >
+          <div className="px-4 mt-3">
+            <Link to="/indique-e-ganhe" className="block rounded-2xl overflow-hidden relative border border-[#c9a84c]/40 shadow-xl" style={{ background: "linear-gradient(135deg,#0b1a3a 0%,#1a1a1a 60%,#0b1a3a 100%)" }}>
+              <div className="relative p-5 pr-24">
+                <h3 className="text-transparent bg-clip-text text-2xl font-bold leading-tight tracking-wide" style={{ backgroundImage: "linear-gradient(135deg,#f5e6a8,#c9a84c)", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>GF+ Premium Club</h3>
+                <p className="mt-1 text-[11px] uppercase tracking-wider text-white/80 leading-snug">Grupo GF Prestige Club — Experiências e Benefícios Exclusivos</p>
+                <span className="mt-3 inline-block rounded-md px-4 py-1.5 text-xs font-bold tracking-wider text-[#0b1a3a] shadow-md" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>JUNTE-SE À ELITE</span>
+              </div>
+              <div className="absolute right-0 top-0 bottom-0 w-28 opacity-30 bg-[radial-gradient(circle_at_70%_50%,rgba(201,168,76,0.6),transparent_70%)]" />
+            </Link>
+          </div>
+
+          <div className="flex gap-2 my-4 px-4">
+            <div className="flex-1 min-w-0"><InstallAppButton /></div>
+            <Link to="/seja-um-parceiro" className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-[#0b1a3a] shadow-md hover:opacity-90 whitespace-nowrap" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>
               <Store size={14} /> Seja parceiro
             </Link>
           </div>
 
-
-
-
-
-
-
+          <div className="px-4">
           <div className="flex items-center justify-between mb-2">
-            <h2 className="font-bold text-base">Categorias</h2>
-            <button onClick={() => setShowFilters(v => !v)}
-              className="text-xs px-3 py-1.5 rounded-full border border-cyan-500/30 text-cyan-300 hover:bg-cyan-500/10 flex items-center gap-1.5">
-              <Settings size={13} /> Filtros {(maxPrice > 0 || sortBy !== "relevance") && <span className="bg-cyan-500 text-[#0a1628] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">!</span>}
+            <h2 className="font-bold text-base tracking-wider uppercase text-slate-800" style={{ fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>Destaques da Semana</h2>
+            <button onClick={() => setShowFilters(v => !v)} className="text-xs px-3 py-1.5 rounded-full border border-[#c9a84c]/40 text-[#0b1a3a] hover:bg-[#c9a84c]/10 flex items-center gap-1.5 font-semibold">
+              <Settings size={13} /> Filtros {(maxPrice > 0 || sortBy !== "relevance") && <span className="bg-[#c9a84c] text-[#0b1a3a] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">!</span>}
             </button>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-3 mb-3">
             {categories.map(c => (
               <button key={c} onClick={() => setActiveCategory(c)}
-                className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap border transition ${
+                className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap border transition font-semibold ${
                   activeCategory === c
-                    ? "bg-gradient-primary border-transparent text-white shadow-elegant"
-                    : "bg-[#0f1d32] border-cyan-500/20 text-slate-300 hover:bg-blue-600/40"
-                }`}>
+                    ? "border-transparent text-[#0b1a3a] shadow-md"
+                    : "bg-white border-[#c9a84c]/40 text-[#0b1a3a] hover:bg-[#c9a84c]/10"
+                }`}
+                style={activeCategory === c ? { background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" } : undefined}
+              >
                 {c}
               </button>
             ))}
+          </div>
           </div>
 
           <LojasParceirasStrip />
