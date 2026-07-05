@@ -700,12 +700,12 @@ function App() {
     }
   };
 
-  if (!ready) return <div className="min-h-screen bg-[#0a1628]" />;
+  if (!ready) return <div className="min-h-screen bg-[#FFE600]" />;
 
   const cartCount = cart.reduce((s, i) => s + i.qty, 0);
 
   return (
-    <div className="min-h-screen pb-24 text-slate-100" style={{ background: "#0a1628" }}>
+    <div className="min-h-screen pb-24 text-slate-100" style={{ background: "#FFE600" }}>
       {/* Toast */}
       {toast && (
         <div className="fixed top-4 left-1/2 -translate-x-1/2 z-[9999] bg-emerald-500 text-white px-5 py-2.5 rounded-lg font-semibold shadow-lg animate-[slideDown_.3s_ease]">
@@ -717,7 +717,7 @@ function App() {
       {drawerOpen && (
         <div className="fixed inset-0 z-[950] flex">
           <div className="absolute inset-0 bg-black/60" onClick={() => setDrawerOpen(false)} />
-          <aside className="relative h-full w-[86%] max-w-[360px] overflow-y-auto bg-[#0a1628] ring-1 ring-cyan-500/20">
+          <aside className="relative h-full w-[86%] max-w-[360px] overflow-y-auto bg-[#FFE600] ring-1 ring-cyan-500/20">
             {/* Header com logo + Marketplace Oficial */}
             <div className="flex items-start gap-3 p-4">
               <img src={logo} alt="Grupo GF" className="h-14 w-14 shrink-0 rounded-lg bg-white/5 p-1 object-contain" />
@@ -737,8 +737,8 @@ function App() {
             </div>
 
             {/* Card usuário / visitante */}
-            <div className="mx-4 mb-3 flex items-center gap-3 rounded-xl bg-[#0f1d32] p-3 ring-1 ring-cyan-500/15">
-              <div className="grid h-11 w-11 place-items-center rounded-full bg-[#0a1628] ring-1 ring-cyan-500/20 overflow-hidden">
+            <div className="mx-4 mb-3 flex items-center gap-3 rounded-xl bg-[#FFE600] p-3 ring-1 ring-cyan-500/15">
+              <div className="grid h-11 w-11 place-items-center rounded-full bg-[#FFE600] ring-1 ring-cyan-500/20 overflow-hidden">
                 {user?.avatar ? (
                   <img src={user.avatar} alt="" className="h-full w-full object-cover" />
                 ) : (
@@ -765,7 +765,7 @@ function App() {
             </div>
 
             {/* Carteira GF */}
-            <div className="mx-4 mb-4 rounded-xl bg-[#0f1d32] p-3 ring-1 ring-cyan-500/15">
+            <div className="mx-4 mb-4 rounded-xl bg-[#FFE600] p-3 ring-1 ring-cyan-500/15">
               <div className="mb-2 flex items-center justify-between">
                 <span className="flex items-center gap-2 text-sm font-bold text-white">
                   <Wallet className="h-4 w-4 text-cyan-400" /> Carteira GF
@@ -900,7 +900,7 @@ function App() {
                       }}
                       className="flex w-full items-center gap-3 rounded-lg px-3 py-3 text-sm text-slate-200 hover:bg-white/5"
                     >
-                      <div className="grid h-9 w-9 place-items-center rounded-full bg-[#0f1d32] ring-1 ring-cyan-500/15">
+                      <div className="grid h-9 w-9 place-items-center rounded-full bg-[#FFE600] ring-1 ring-cyan-500/15">
                         <Package className="h-4 w-4 text-slate-300" />
                       </div>
                       <span className="flex-1 text-left font-medium">{c}</span>
@@ -947,7 +947,7 @@ function App() {
             </div>
 
             {/* Trust ribbon footer */}
-            <div className="grid grid-cols-2 gap-3 border-t border-cyan-500/10 bg-[#0a1628]/80 p-4 text-[11px]">
+            <div className="grid grid-cols-2 gap-3 border-t border-cyan-500/10 bg-[#FFE600]/80 p-4 text-[11px]">
               {[
                 { icon: Truck, t: "Frete Grátis", s: "acima de R$199", c: "text-cyan-400" },
                 { icon: ShieldCheck, t: "Compra Segura", s: "ambiente protegido", c: "text-emerald-400" },
@@ -968,9 +968,9 @@ function App() {
       )}
 
       {/* Header premium navy + gold */}
-      <header className="sticky top-0 z-50 border-b border-[#c9a84c]/30 shadow-lg" style={{ background: "linear-gradient(180deg,#0b1a3a 0%,#0f1f45 100%)" }}>
+      <header className="sticky top-0 z-50 border-b border-[#3483FA]/30 shadow-lg" style={{ background: "linear-gradient(180deg,#FFE600 0%,#FFE600 100%)" }}>
         <div className="flex items-center gap-2 px-3 py-3">
-          <button onClick={() => setDrawerOpen(true)} className="rounded-md p-2 text-[#f0d78c] hover:bg-white/10" aria-label="Abrir menu">
+          <button onClick={() => setDrawerOpen(true)} className="rounded-md p-2 text-[#5c9dff] hover:bg-white/10" aria-label="Abrir menu">
             <Menu className="h-5 w-5" />
           </button>
           <button onClick={() => setTab("home")} className="flex items-center gap-2 min-w-0">
@@ -978,22 +978,22 @@ function App() {
               <img src={logo} alt="Grupo GF" className="h-full w-full object-contain drop-shadow-[0_1px_2px_rgba(0,0,0,0.5)]" />
             </div>
             <div className="min-w-0 leading-tight text-left">
-              <p className="truncate text-[15px] font-extrabold tracking-[0.14em] uppercase" style={{ color: "#f0d78c", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>
+              <p className="truncate text-[15px] font-extrabold tracking-[0.14em] uppercase" style={{ color: "#5c9dff", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>
                 Grupo GF Varejista
               </p>
-              <p className="flex items-center gap-1 text-[10px] font-semibold text-[#c9a84c]/80 tracking-wider uppercase">
+              <p className="flex items-center gap-1 text-[10px] font-semibold text-[#3483FA]/80 tracking-wider uppercase">
                 <BadgeCheck className="h-3 w-3" /> Marketplace Oficial
               </p>
             </div>
           </button>
           <div className="ml-auto flex items-center gap-1">
-            <button onClick={() => setTab("cart")} className="relative rounded-md p-2 text-[#f0d78c] hover:bg-white/10">
+            <button onClick={() => setTab("cart")} className="relative rounded-md p-2 text-[#5c9dff] hover:bg-white/10">
               <ShoppingCart className="h-5 w-5" />
               {cartCount > 0 && (
-                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-[#c9a84c] px-1 text-[10px] font-bold text-[#0b1a3a]">{cartCount}</span>
+                <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-[#3483FA] px-1 text-[10px] font-bold text-slate-900">{cartCount}</span>
               )}
             </button>
-            <button onClick={() => setTab("notifications")} className="relative rounded-md p-2 text-[#f0d78c] hover:bg-white/10">
+            <button onClick={() => setTab("notifications")} className="relative rounded-md p-2 text-[#5c9dff] hover:bg-white/10">
               <Bell className="h-5 w-5" />
               {unreadNotifs > 0 && (
                 <span className="absolute -right-0.5 -top-0.5 grid h-4 min-w-4 place-items-center rounded-full bg-red-500 px-1 text-[10px] font-bold text-white">{unreadNotifs}</span>
@@ -1004,14 +1004,14 @@ function App() {
         <div className="px-3 pb-3">
           <div className="relative flex items-center gap-2">
             <div className="relative flex-1">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#c9a84c]" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#3483FA]" />
               <input
                 value={search}
                 onChange={(e) => setSearch(e.target.value)}
                 placeholder="Explore as Ofertas Únicas do Grupo GF..."
-                className="w-full rounded-full bg-white py-2.5 pl-9 pr-10 text-sm text-slate-800 ring-1 ring-[#c9a84c]/40 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#c9a84c]"
+                className="w-full rounded-full bg-white py-2.5 pl-9 pr-10 text-sm text-slate-800 ring-1 ring-[#3483FA]/40 placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-[#3483FA]"
               />
-              <Camera className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#c9a84c]" />
+              <Camera className="absolute right-3 top-1/2 -translate-y-1/2 h-4 w-4 text-[#3483FA]" />
             </div>
           </div>
         </div>
@@ -1033,9 +1033,9 @@ function App() {
               { icon: Store, label: "Ofertas Relâmpago" },
               { icon: DollarSign, label: "Cashback" },
             ].map((q, i) => (
-              <div key={i} className="shrink-0 w-[86px] rounded-2xl bg-white shadow-[0_2px_10px_-4px_rgba(11,26,58,0.15)] border border-[#c9a84c]/25 p-2 flex flex-col items-center gap-1.5">
-                <div className="h-11 w-11 rounded-full grid place-items-center" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>
-                  <q.icon className="h-5 w-5 text-[#0b1a3a]" />
+              <div key={i} className="shrink-0 w-[86px] rounded-2xl bg-white shadow-[0_2px_10px_-4px_rgba(11,26,58,0.15)] border border-[#3483FA]/25 p-2 flex flex-col items-center gap-1.5">
+                <div className="h-11 w-11 rounded-full grid place-items-center" style={{ background: "linear-gradient(135deg,#66aaff,#3483FA)" }}>
+                  <q.icon className="h-5 w-5 text-slate-900" />
                 </div>
                 <span className="text-[10px] font-semibold text-center text-slate-700 leading-tight">{q.label}</span>
               </div>
@@ -1043,11 +1043,11 @@ function App() {
           </div>
 
           <div className="px-4 mt-3">
-            <Link to="/indique-e-ganhe" className="block rounded-2xl overflow-hidden relative border border-[#c9a84c]/40 shadow-xl" style={{ background: "linear-gradient(135deg,#0b1a3a 0%,#1a1a1a 60%,#0b1a3a 100%)" }}>
+            <Link to="/indique-e-ganhe" className="block rounded-2xl overflow-hidden relative border border-[#3483FA]/40 shadow-xl" style={{ background: "linear-gradient(135deg,#FFE600 0%,#1a1a1a 60%,#FFE600 100%)" }}>
               <div className="relative p-5 pr-24">
-                <h3 className="text-transparent bg-clip-text text-2xl font-bold leading-tight tracking-wide" style={{ backgroundImage: "linear-gradient(135deg,#f5e6a8,#c9a84c)", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>GF+ Premium Club</h3>
+                <h3 className="text-transparent bg-clip-text text-2xl font-bold leading-tight tracking-wide" style={{ backgroundImage: "linear-gradient(135deg,#66aaff,#3483FA)", fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>GF+ Premium Club</h3>
                 <p className="mt-1 text-[11px] uppercase tracking-wider text-white/80 leading-snug">Grupo GF Prestige Club — Experiências e Benefícios Exclusivos</p>
-                <span className="mt-3 inline-block rounded-md px-4 py-1.5 text-xs font-bold tracking-wider text-[#0b1a3a] shadow-md" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>JUNTE-SE À ELITE</span>
+                <span className="mt-3 inline-block rounded-md px-4 py-1.5 text-xs font-bold tracking-wider text-slate-900 shadow-md" style={{ background: "linear-gradient(135deg,#66aaff,#3483FA)" }}>JUNTE-SE À ELITE</span>
               </div>
               <div className="absolute right-0 top-0 bottom-0 w-28 opacity-30 bg-[radial-gradient(circle_at_70%_50%,rgba(201,168,76,0.6),transparent_70%)]" />
             </Link>
@@ -1055,7 +1055,7 @@ function App() {
 
           <div className="flex gap-2 my-4 px-4">
             <div className="flex-1 min-w-0"><InstallAppButton /></div>
-            <Link to="/seja-um-parceiro" className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-[#0b1a3a] shadow-md hover:opacity-90 whitespace-nowrap" style={{ background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" }}>
+            <Link to="/seja-um-parceiro" className="flex items-center gap-1.5 px-3 py-2 rounded-lg text-xs font-semibold text-slate-900 shadow-md hover:opacity-90 whitespace-nowrap" style={{ background: "linear-gradient(135deg,#66aaff,#3483FA)" }}>
               <Store size={14} /> Seja parceiro
             </Link>
           </div>
@@ -1063,8 +1063,8 @@ function App() {
           <div className="px-4">
           <div className="flex items-center justify-between mb-2">
             <h2 className="font-bold text-base tracking-wider uppercase text-slate-800" style={{ fontFamily: "'Cormorant Garamond','Playfair Display',serif" }}>Destaques da Semana</h2>
-            <button onClick={() => setShowFilters(v => !v)} className="text-xs px-3 py-1.5 rounded-full border border-[#c9a84c]/40 text-[#0b1a3a] hover:bg-[#c9a84c]/10 flex items-center gap-1.5 font-semibold">
-              <Settings size={13} /> Filtros {(maxPrice > 0 || sortBy !== "relevance") && <span className="bg-[#c9a84c] text-[#0b1a3a] text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">!</span>}
+            <button onClick={() => setShowFilters(v => !v)} className="text-xs px-3 py-1.5 rounded-full border border-[#3483FA]/40 text-slate-900 hover:bg-[#3483FA]/10 flex items-center gap-1.5 font-semibold">
+              <Settings size={13} /> Filtros {(maxPrice > 0 || sortBy !== "relevance") && <span className="bg-[#3483FA] text-slate-900 text-[10px] font-bold w-4 h-4 rounded-full flex items-center justify-center">!</span>}
             </button>
           </div>
           <div className="flex gap-2 overflow-x-auto pb-3 mb-3">
@@ -1072,10 +1072,10 @@ function App() {
               <button key={c} onClick={() => setActiveCategory(c)}
                 className={`px-3.5 py-1.5 rounded-full text-xs whitespace-nowrap border transition font-semibold ${
                   activeCategory === c
-                    ? "border-transparent text-[#0b1a3a] shadow-md"
-                    : "bg-white border-[#c9a84c]/40 text-[#0b1a3a] hover:bg-[#c9a84c]/10"
+                    ? "border-transparent text-slate-900 shadow-md"
+                    : "bg-white border-[#3483FA]/40 text-slate-900 hover:bg-[#3483FA]/10"
                 }`}
-                style={activeCategory === c ? { background: "linear-gradient(135deg,#f5e6a8,#c9a84c)" } : undefined}
+                style={activeCategory === c ? { background: "linear-gradient(135deg,#66aaff,#3483FA)" } : undefined}
               >
                 {c}
               </button>
@@ -1100,7 +1100,7 @@ function App() {
                   ].map(o => (
                     <button key={o.v} onClick={() => setSortBy(o.v as typeof sortBy)}
                       className={`text-[11px] px-2.5 py-1 rounded-full border transition ${
-                        sortBy === o.v ? "bg-cyan-500 text-[#0a1628] border-cyan-500 font-semibold" : "bg-[#0f1d32] border-cyan-500/20 text-slate-300"
+                        sortBy === o.v ? "bg-cyan-500 text-[#FFE600] border-cyan-500 font-semibold" : "bg-[#FFE600] border-cyan-500/20 text-slate-300"
                       }`}>{o.l}</button>
                   ))}
                 </div>
@@ -1148,7 +1148,7 @@ function App() {
               const subs = CATEGORIES_TREE[c] || [];
               const isOpen = expandedCategory === c;
               return (
-                <div key={c} className="rounded-xl bg-[#162340] border border-cyan-500/10 overflow-hidden">
+                <div key={c} className="rounded-xl bg-[#FFE600] border border-cyan-500/10 overflow-hidden">
                   <button onClick={() => setExpandedCategory(isOpen ? null : c)}
                     className="w-full p-4 flex items-center justify-between hover:bg-white/5">
                     <span className="font-semibold text-left">{c}</span>
@@ -1158,7 +1158,7 @@ function App() {
                     <div className="px-3 pb-3 flex flex-wrap gap-1.5">
                       {subs.map(s => (
                         <button key={s} onClick={() => { setActiveCategory(c); setSearch(s); setTab("home"); }}
-                          className="text-[11px] px-2.5 py-1 rounded-full bg-[#0f1d32] border border-orange-500/30 text-slate-200 hover:border-orange-400">
+                          className="text-[11px] px-2.5 py-1 rounded-full bg-[#FFE600] border border-orange-500/30 text-slate-200 hover:border-orange-400">
                           {s}
                         </button>
                       ))}
@@ -1190,15 +1190,15 @@ function App() {
             <>
               <div className="space-y-3 mb-4">
                 {cartDetailed.map(i => (
-                  <div key={i.product.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 flex gap-3">
+                  <div key={i.product.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 flex gap-3">
                     <img src={i.product.image} alt="" className="w-16 h-16 rounded-lg object-cover" loading="lazy" />
                     <div className="flex-1 min-w-0">
                       <p className="font-semibold text-sm truncate">{i.product.name}</p>
                       <p className="text-cyan-400 font-bold text-sm">{brl(i.product.price)}</p>
                       <div className="flex items-center gap-2 mt-2">
-                        <button onClick={() => changeQty(i.product.id, -1)} className="w-7 h-7 rounded bg-[#0f1d32] flex items-center justify-center"><Minus size={14} /></button>
+                        <button onClick={() => changeQty(i.product.id, -1)} className="w-7 h-7 rounded bg-[#FFE600] flex items-center justify-center"><Minus size={14} /></button>
                         <span className="text-sm w-6 text-center">{i.qty}</span>
-                        <button onClick={() => changeQty(i.product.id, 1)} className="w-7 h-7 rounded bg-[#0f1d32] flex items-center justify-center"><Plus size={14} /></button>
+                        <button onClick={() => changeQty(i.product.id, 1)} className="w-7 h-7 rounded bg-[#FFE600] flex items-center justify-center"><Plus size={14} /></button>
                         <button onClick={() => removeFromCart(i.product.id)} className="ml-auto text-red-400 p-1"><Trash2 size={16} /></button>
                       </div>
                     </div>
@@ -1208,7 +1208,7 @@ function App() {
 
               <div className="flex gap-2 mb-3">
                 <input value={couponInput} onChange={e => setCouponInput(e.target.value)}
-                  className="flex-1 bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400"
+                  className="flex-1 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400"
                   placeholder="Código do cupom" />
                 <button onClick={applyCoupon} className="px-4 py-2 text-sm rounded-lg font-semibold text-white"
                   style={{ background: "linear-gradient(135deg,#0a4fe3,#ff6a00)" }}>Aplicar</button>
@@ -1241,7 +1241,7 @@ function App() {
                 </div>
               )}
 
-              <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4 mb-3">
+              <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4 mb-3">
                 <div className="flex justify-between text-sm mb-2"><span>Subtotal</span><span>{brl(subtotal)}</span></div>
                 {appliedCoupon && (
                   <div className="flex justify-between text-sm mb-2 text-green-400">
@@ -1269,7 +1269,7 @@ function App() {
               <div className="space-y-2">
                 <button onClick={openCheckout} disabled={mpLoading || belowMin}
                   className="w-full py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2 disabled:opacity-60 disabled:cursor-not-allowed"
-                  style={{ background: "linear-gradient(135deg,#00b1ea,#2d3277)" }}>
+                  style={{ background: "linear-gradient(135deg,#00b1ea,#3483FA)" }}>
                   <CreditCard size={18} /> Finalizar Compra (Cartão, Pix, Boleto)
                 </button>
                 <button onClick={() => checkout("whatsapp")} disabled={belowMin}
@@ -1373,7 +1373,7 @@ function App() {
               ["Posso ter mais de um endereço cadastrado?", "Sim! Salve quantos endereços quiser (casa, trabalho, casa dos pais) e escolha qual usar a cada compra."],
               ["Como cancelo um pedido?", "Enquanto o status estiver 'Pendente' ou 'Pago', fale com a gente pelo WhatsApp para solicitar o cancelamento e o estorno."],
             ].map(([q, a]) => (
-              <details key={q} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4 group">
+              <details key={q} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4 group">
                 <summary className="font-semibold text-sm cursor-pointer flex items-center justify-between gap-2 list-none">
                   <span>{q}</span>
                   <Plus size={16} className="text-cyan-400 group-open:rotate-45 transition-transform shrink-0" />
@@ -1428,7 +1428,7 @@ function App() {
                 ["Posso retirar na loja?", "Sim, sem custo adicional. Avisamos quando o pedido estiver pronto."],
                 ["Como vira parceiro?", "Toque em 'Seja um Parceiro GF' e envie seu cadastro para análise."],
               ].map(([q, a]) => (
-                <details key={q} className="bg-[#162340] border border-cyan-500/10 rounded-lg px-3 py-2 group">
+                <details key={q} className="bg-[#FFE600] border border-cyan-500/10 rounded-lg px-3 py-2 group">
                   <summary className="text-xs font-semibold cursor-pointer flex items-center justify-between gap-2 list-none">
                     <span>{q}</span>
                     <Plus size={12} className="text-cyan-400 group-open:rotate-45 transition-transform shrink-0" />
@@ -1471,7 +1471,7 @@ function App() {
 
 
       {/* Bottom Nav */}
-      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-cyan-500/10 grid grid-cols-5" style={{ background: "#0f1d32" }}>
+      <nav className="fixed bottom-0 left-0 right-0 z-50 border-t border-cyan-500/10 grid grid-cols-5" style={{ background: "#FFE600" }}>
         {[
           { t: "home", label: "Início", icon: HomeIcon },
           { t: "categories", label: "Categorias", icon: Grid },
@@ -1510,8 +1510,8 @@ function App() {
           <div className="fixed inset-0 bg-black/70 z-[990]" onClick={() => !mpLoading && setCheckoutOpen(false)} />
           <div className="fixed inset-0 z-[995] flex items-end sm:items-center justify-center p-0 sm:p-4 pointer-events-none">
             <form onSubmit={submitCheckout}
-              className="pointer-events-auto w-full sm:max-w-lg max-h-[92vh] overflow-y-auto bg-[#0f1d32] sm:rounded-2xl rounded-t-2xl border border-cyan-500/20 p-5 space-y-3">
-              <div className="flex items-center justify-between sticky top-0 -mx-5 -mt-5 px-5 pt-5 pb-3 bg-[#0f1d32] border-b border-white/5 z-10">
+              className="pointer-events-auto w-full sm:max-w-lg max-h-[92vh] overflow-y-auto bg-[#FFE600] sm:rounded-2xl rounded-t-2xl border border-cyan-500/20 p-5 space-y-3">
+              <div className="flex items-center justify-between sticky top-0 -mx-5 -mt-5 px-5 pt-5 pb-3 bg-[#FFE600] border-b border-white/5 z-10">
                 <h3 className="font-bold text-lg">Dados de entrega</h3>
                 <button type="button" onClick={() => setCheckoutOpen(false)} disabled={mpLoading}
                   className="p-1.5 rounded hover:bg-white/10"><X size={18} /></button>
@@ -1521,63 +1521,63 @@ function App() {
               <div className="grid grid-cols-2 gap-2">
                 <input required maxLength={120} placeholder="Seu nome*" value={delivery.customerName}
                   onChange={e => setDelivery(d => ({ ...d, customerName: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={30} placeholder="Telefone/WhatsApp*" value={delivery.customerPhone}
                   onChange={e => setDelivery(d => ({ ...d, customerPhone: e.target.value }))}
-                  className="bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input type="email" maxLength={255} placeholder="Email (opcional)" value={delivery.customerEmail}
                   onChange={e => setDelivery(d => ({ ...d, customerEmail: e.target.value }))}
-                  className="bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
               </div>
 
               <p className="text-xs font-semibold text-orange-300 uppercase pt-2">Quem vai receber</p>
               <div className="grid grid-cols-2 gap-2">
                 <input required maxLength={120} placeholder="Nome do destinatário*" value={delivery.recipientName}
                   onChange={e => setDelivery(d => ({ ...d, recipientName: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={30} placeholder="Telefone do destinatário*" value={delivery.recipientPhone}
                   onChange={e => setDelivery(d => ({ ...d, recipientPhone: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
               </div>
 
               <p className="text-xs font-semibold text-orange-300 uppercase pt-2">Endereço de entrega</p>
               <div className="grid grid-cols-3 gap-2">
                 <input required maxLength={15} placeholder="CEP*" value={delivery.zip}
                   onChange={e => setDelivery(d => ({ ...d, zip: e.target.value }))}
-                  className="bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={200} placeholder="Rua*" value={delivery.street}
                   onChange={e => setDelivery(d => ({ ...d, street: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={20} placeholder="Nº*" value={delivery.number}
                   onChange={e => setDelivery(d => ({ ...d, number: e.target.value }))}
-                  className="bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input maxLength={120} placeholder="Complemento" value={delivery.complement}
                   onChange={e => setDelivery(d => ({ ...d, complement: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={120} placeholder="Bairro*" value={delivery.neighborhood}
                   onChange={e => setDelivery(d => ({ ...d, neighborhood: e.target.value }))}
-                  className="col-span-3 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-3 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={120} placeholder="Cidade*" value={delivery.city}
                   onChange={e => setDelivery(d => ({ ...d, city: e.target.value }))}
-                  className="col-span-2 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-2 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input required maxLength={60} placeholder="UF*" value={delivery.state}
                   onChange={e => setDelivery(d => ({ ...d, state: e.target.value.toUpperCase() }))}
-                  className="bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <input maxLength={255} placeholder="Ponto de referência" value={delivery.reference}
                   onChange={e => setDelivery(d => ({ ...d, reference: e.target.value }))}
-                  className="col-span-3 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
+                  className="col-span-3 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm" />
                 <textarea maxLength={1000} placeholder="Observações (opcional)" value={delivery.notes}
                   onChange={e => setDelivery(d => ({ ...d, notes: e.target.value }))}
-                  className="col-span-3 bg-[#162340] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm min-h-[60px]" />
+                  className="col-span-3 bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm min-h-[60px]" />
               </div>
 
-              <div className="bg-[#162340] border border-cyan-500/10 rounded-lg p-3 text-sm flex justify-between font-bold">
+              <div className="bg-[#FFE600] border border-cyan-500/10 rounded-lg p-3 text-sm flex justify-between font-bold">
                 <span>Total a pagar</span><span className="text-cyan-300">{brl(total)}</span>
               </div>
 
               <button type="submit" disabled={mpLoading}
                 className="w-full py-3 rounded-lg font-semibold text-white flex items-center justify-center gap-2 disabled:opacity-60"
-                style={{ background: "linear-gradient(135deg,#00b1ea,#2d3277)" }}>
+                style={{ background: "linear-gradient(135deg,#00b1ea,#3483FA)" }}>
                 <CreditCard size={18} /> {mpLoading ? "Redirecionando para o Mercado Pago..." : "Confirmar e ir para pagamento"}
               </button>
               <p className="text-[11px] text-slate-400 text-center">
@@ -1597,7 +1597,7 @@ function App() {
 /* ---------- Welcome ---------- */
 function WelcomeScreen() {
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center px-6" style={{ background: "#0a1628" }}>
+    <div className="fixed inset-0 z-[2000] flex items-center justify-center px-6" style={{ background: "#FFE600" }}>
       <div className="w-full max-w-sm text-center">
         <img src={logo} alt="Grupo GF" className="w-24 h-24 mx-auto mb-4 rounded-2xl bg-white p-1.5" />
         <h1 className="font-bold text-2xl text-white">GRUPO GF</h1>
@@ -1635,7 +1635,7 @@ function RegisterScreen({ onRegister }: { onRegister: (u: UserData) => void }) {
   };
 
   return (
-    <div className="fixed inset-0 z-[2000] flex items-center justify-center px-6" style={{ background: "#0a1628" }}>
+    <div className="fixed inset-0 z-[2000] flex items-center justify-center px-6" style={{ background: "#FFE600" }}>
       <div className="w-full max-w-sm">
         <div className="text-center mb-6">
           <img src={logo} alt="Grupo GF" className="w-20 h-20 mx-auto mb-3 rounded-2xl bg-white p-1.5" />
@@ -1646,16 +1646,16 @@ function RegisterScreen({ onRegister }: { onRegister: (u: UserData) => void }) {
         <form onSubmit={submit} className="space-y-3">
           {err && <p className="text-red-400 text-sm text-center">{err}</p>}
           <input value={name} onChange={e => setName(e.target.value)} required
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
             placeholder="Seu nome completo" />
           <input value={phone} onChange={e => setPhone(e.target.value)} required
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
             placeholder="Telefone (DDD + número)" />
           <input value={email} onChange={e => setEmail(e.target.value)} type="email" required
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
             placeholder="E-mail" />
           <input value={pin} onChange={e => setPin(e.target.value)} type="password" maxLength={6}
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3.5 py-2.5 text-white placeholder:text-slate-400 focus:outline-none focus:border-cyan-400"
             placeholder="PIN (4-6 dígitos, opcional)" />
           <button type="submit" className="w-full py-3 rounded-lg font-semibold text-white"
             style={{ background: "linear-gradient(135deg,#0a4fe3,#ff6a00)" }}>
@@ -1869,8 +1869,8 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
   };
 
   return (
-    <div className="fixed inset-0 z-[1000] bg-[#0a1628] overflow-y-auto" onClick={e => e.stopPropagation()}>
-      <div className="bg-[#0f1d32] min-h-screen w-full">
+    <div className="fixed inset-0 z-[1000] bg-[#FFE600] overflow-y-auto" onClick={e => e.stopPropagation()}>
+      <div className="bg-[#FFE600] min-h-screen w-full">
         <div className="relative">
           <img src={product.image} alt="" className="w-full aspect-square object-cover" />
           <button onClick={onClose} className="absolute top-4 left-4 w-10 h-10 bg-black/60 rounded-full flex items-center justify-center backdrop-blur">
@@ -1880,7 +1880,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
         <div className="p-5 pb-28">
           <p className="text-xs text-cyan-400 font-semibold">{product.category}</p>
           <h3 className="font-bold text-lg mt-1">{product.name}</h3>
-          <div className="mt-2 flex items-center gap-2 rounded-lg bg-[#162340] border border-cyan-500/15 px-3 py-2">
+          <div className="mt-2 flex items-center gap-2 rounded-lg bg-[#FFE600] border border-cyan-500/15 px-3 py-2">
             <Store size={16} className="text-cyan-400 shrink-0" />
             <div className="min-w-0">
               <div className="text-[10px] uppercase tracking-wide text-slate-400">Vendido por</div>
@@ -1892,7 +1892,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
             <span className="text-2xl font-bold text-cyan-400">{brl(product.price)}</span>
           </div>
           {reviews.length > 0 && (
-            <div className="mt-3 flex items-center gap-2 rounded-xl bg-[#162340] border border-cyan-500/15 px-3 py-2">
+            <div className="mt-3 flex items-center gap-2 rounded-xl bg-[#FFE600] border border-cyan-500/15 px-3 py-2">
               <div className="flex items-center gap-0.5">
                 {[1,2,3,4,5].map(i => (
                   <Star key={i} size={15} className={i <= Math.round(avgRating) ? "fill-yellow-400 text-yellow-400" : "text-slate-600"} />
@@ -1910,7 +1910,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
                   const label = v.name || [v.attributes?.color, v.attributes?.size].filter(Boolean).join(" ") || "Variação";
                   const vPrice = v.discount_price ?? v.price;
                   return (
-                    <div key={v.id} className="flex items-center gap-2 rounded-lg border border-cyan-500/25 bg-[#162340] px-2.5 py-1.5">
+                    <div key={v.id} className="flex items-center gap-2 rounded-lg border border-cyan-500/25 bg-[#FFE600] px-2.5 py-1.5">
                       {v.image_url && <img src={v.image_url} alt="" className="h-8 w-8 rounded object-cover" />}
                       <div className="text-xs">
                         <div className="font-semibold text-white">{label}</div>
@@ -1969,7 +1969,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
             )}
 
             {showForm && (
-              <div className="bg-[#162340] border border-cyan-500/20 rounded-xl p-3 mb-4 space-y-3">
+              <div className="bg-[#FFE600] border border-cyan-500/20 rounded-xl p-3 mb-4 space-y-3">
                 <div className="flex items-center gap-1">
                   {[1,2,3,4,5].map(i => (
                     <button key={i} onClick={() => setRating(i)} type="button">
@@ -1981,7 +1981,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
                   value={comment} onChange={e => setComment(e.target.value)}
                   placeholder="Conte como foi sua experiência..."
                   maxLength={500}
-                  className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg p-2 text-sm min-h-[80px]"
+                  className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2 text-sm min-h-[80px]"
                 />
                 <div className="space-y-2">
                   <label className="flex items-center gap-2 text-xs text-cyan-400 cursor-pointer">
@@ -2003,7 +2003,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
                 <div className="flex gap-2">
                   <button onClick={() => { setShowForm(false); setErr(null); }} className="flex-1 py-2 rounded-lg border border-slate-600 text-xs">Cancelar</button>
                   <button onClick={submitReview} disabled={submitting || !comment.trim()}
-                    className="flex-1 py-2 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-xs disabled:opacity-50">
+                    className="flex-1 py-2 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-xs disabled:opacity-50">
                     {submitting ? "Enviando..." : "Publicar"}
                   </button>
                 </div>
@@ -2017,7 +2017,7 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
             ) : (
               <div className="space-y-3">
                 {reviews.map(r => (
-                  <div key={r.id} className="bg-[#162340] border border-cyan-500/10 rounded-lg p-3">
+                  <div key={r.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-lg p-3">
                     <div className="flex items-center justify-between mb-1">
                       <p className="text-sm font-semibold">{r.user_name || "Cliente"}</p>
                       <div className="flex items-center gap-0.5">
@@ -2068,9 +2068,9 @@ function ProductModal({ product, onClose, onAdd, isFav, onFav, user, orders, all
                     <button
                       key={sp.id}
                       onClick={() => onOpenProduct(sp)}
-                      className="snap-start shrink-0 w-32 text-left bg-[#162340] border border-cyan-500/15 rounded-lg overflow-hidden hover:border-cyan-400/40 transition"
+                      className="snap-start shrink-0 w-32 text-left bg-[#FFE600] border border-cyan-500/15 rounded-lg overflow-hidden hover:border-cyan-400/40 transition"
                     >
-                      <div className="aspect-square bg-[#0a1628]">
+                      <div className="aspect-square bg-[#FFE600]">
                         <img src={sp.image} alt={sp.name} className="w-full h-full object-cover" />
                       </div>
                       <div className="p-2">
@@ -2109,7 +2109,7 @@ function WalletInline() {
 
   return (
     <div className="space-y-3">
-      <Link to="/carteira" className="block rounded-2xl p-4 border border-cyan-500/15 bg-[#0f1d32] shadow-lg">
+      <Link to="/carteira" className="block rounded-2xl p-4 border border-cyan-500/15 bg-[#FFE600] shadow-lg">
         <div className="flex items-start gap-3">
           <div className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0"
             style={{ background: "linear-gradient(135deg,#6d28d9,#4f46e5)" }}>
@@ -2154,7 +2154,7 @@ function WalletInline() {
           { to: "/wallet/transactions", icon: FileText, label: "Extrato", sub: "ver lançamentos", bg: "rgba(234,179,8,0.15)", color: "#eab308" },
         ].map((a) => (
           <Link key={a.label} to={a.to}
-            className="rounded-xl p-2.5 bg-[#0f1d32] border border-cyan-500/10 text-center flex flex-col items-center gap-1">
+            className="rounded-xl p-2.5 bg-[#FFE600] border border-cyan-500/10 text-center flex flex-col items-center gap-1">
             <div className="w-9 h-9 rounded-lg flex items-center justify-center" style={{ background: a.bg }}>
               <a.icon size={18} style={{ color: a.color }} />
             </div>
@@ -2209,7 +2209,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
     <div className="pb-6">
       {/* Header banner */}
       <div className="relative px-4 pt-6 pb-8 text-center overflow-hidden"
-        style={{ background: "linear-gradient(135deg, #0f1d32 0%, #1e3a5f 100%)" }}>
+        style={{ background: "linear-gradient(135deg, #FFE600 0%, #1e3a5f 100%)" }}>
         {/* Logo de capa atrás da foto */}
         <div className="pointer-events-none absolute inset-0 flex items-center justify-center">
           <img src={logo} alt="" aria-hidden
@@ -2223,7 +2223,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
             <img src={user.avatar || defaultAvatar} alt="" className="w-full h-full object-cover" />
           </div>
           <button onClick={() => fileRef.current?.click()}
-            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-cyan-400 text-[#0a1628] flex items-center justify-center shadow-lg">
+            className="absolute bottom-0 right-0 w-8 h-8 rounded-full bg-cyan-400 text-[#FFE600] flex items-center justify-center shadow-lg">
             <Camera size={15} />
           </button>
           <input ref={fileRef} type="file" accept="image/*" hidden onChange={handlePhoto} />
@@ -2261,7 +2261,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
       </div>
 
       {/* Menu list */}
-      <div className="bg-[#0f1d32] mt-4 divide-y divide-cyan-500/10 border-y border-cyan-500/10">
+      <div className="bg-[#FFE600] mt-4 divide-y divide-cyan-500/10 border-y border-cyan-500/10">
         {isOwner && onGoAdmin && (
           <MenuRow icon={Shield} label="Administração"
             desc="Painel administrativo da loja"
@@ -2310,7 +2310,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
 
 
       {/* Danger zone */}
-      <div className="bg-[#0f1d32] mt-4 divide-y divide-red-500/10 border-y border-red-500/10">
+      <div className="bg-[#FFE600] mt-4 divide-y divide-red-500/10 border-y border-red-500/10">
         <MenuRow icon={Trash2} label="Excluir conta"
           desc="Apagar permanentemente seus dados"
           danger
@@ -2328,7 +2328,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
       {openDelete && <DeleteAccountModal user={user} onClose={() => setOpenDelete(false)} />}
       {openFavs && (
         <div className="fixed inset-0 z-[1100] bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4" onClick={() => setOpenFavs(false)}>
-          <div className="bg-[#0f1d32] rounded-t-2xl sm:rounded-2xl max-w-md w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+          <div className="bg-[#FFE600] rounded-t-2xl sm:rounded-2xl max-w-md w-full max-h-[85vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
             <ModalHeader title="Meus favoritos" onClose={() => setOpenFavs(false)} icon={Heart} />
             <div className="p-4">
               {favs.length === 0 ? (
@@ -2337,7 +2337,7 @@ function ProfileTab({ user, setUser, orders, products, onOpenProduct, onGoFaq, o
                 <div className="grid grid-cols-3 gap-2">
                   {favs.map(p => (
                     <button key={p.id} onClick={() => { setOpenFavs(false); onOpenProduct(p); }}
-                      className="bg-[#162340] border border-cyan-500/10 rounded-lg overflow-hidden">
+                      className="bg-[#FFE600] border border-cyan-500/10 rounded-lg overflow-hidden">
                       <img src={p.image} alt="" className="w-full h-20 object-cover" />
                       <p className="text-[10px] p-1 truncate">{p.name}</p>
                     </button>
@@ -2373,7 +2373,7 @@ function MenuRow({ icon: Icon, label, desc, onClick, danger, badge }: {
 
 function ModalHeader({ title, onClose, icon: Icon }: { title: string; onClose: () => void; icon: any }) {
   return (
-    <div className="flex items-center justify-between p-4 border-b border-cyan-500/10 sticky top-0 bg-[#0f1d32] z-10">
+    <div className="flex items-center justify-between p-4 border-b border-cyan-500/10 sticky top-0 bg-[#FFE600] z-10">
       <h3 className="font-bold text-base flex items-center gap-2">
         <Icon size={18} className="text-cyan-400" />
         {title}
@@ -2388,7 +2388,7 @@ function ModalHeader({ title, onClose, icon: Icon }: { title: string; onClose: (
 function ModalShell({ children, onClose }: { children: React.ReactNode; onClose: () => void }) {
   return (
     <div className="fixed inset-0 z-[1100] bg-black/70 flex items-end sm:items-center justify-center p-0 sm:p-4" onClick={onClose}>
-      <div className="bg-[#0f1d32] rounded-t-2xl sm:rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
+      <div className="bg-[#FFE600] rounded-t-2xl sm:rounded-2xl max-w-md w-full max-h-[90vh] overflow-y-auto" onClick={e => e.stopPropagation()}>
         {children}
       </div>
     </div>
@@ -2415,11 +2415,11 @@ function ProfileInfoModal({ user, setUser, onClose }: { user: UserData; setUser:
           <div key={f.k}>
             <label className="text-xs text-slate-400 mb-1 block">{f.label}</label>
             <input type={f.type} value={form[f.k]} onChange={e => setForm({ ...form, [f.k]: e.target.value })}
-              className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+              className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
           </div>
         ))}
         <button onClick={save}
-          className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-sm mt-2">
+          className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-sm mt-2">
           Salvar alterações
         </button>
       </div>
@@ -2489,7 +2489,7 @@ function SecurityModal({ user, setUser, onClose, showToast }: {
               className="w-16 h-16 rounded-full object-cover border-2 border-cyan-400" />
             <div className="flex-1 flex gap-2">
               <button onClick={() => fileRef.current?.click()}
-                className="flex-1 py-2 px-3 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-xs">
+                className="flex-1 py-2 px-3 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-xs">
                 Alterar foto
               </button>
               {user.avatar && (
@@ -2508,12 +2508,12 @@ function SecurityModal({ user, setUser, onClose, showToast }: {
           <div className="space-y-2">
             <input type="password" placeholder="Nova senha (mín. 6 caracteres)"
               value={newPassword} onChange={e => setNewPassword(e.target.value)}
-              className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+              className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             <input type="password" placeholder="Confirmar nova senha"
               value={confirmPassword} onChange={e => setConfirmPassword(e.target.value)}
-              className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+              className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             <button onClick={changePassword} disabled={busy}
-              className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-sm disabled:opacity-50">
+              className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-sm disabled:opacity-50">
               {busy ? "Salvando..." : "Salvar nova senha"}
             </button>
           </div>
@@ -2524,7 +2524,7 @@ function SecurityModal({ user, setUser, onClose, showToast }: {
           <div className="space-y-2">
             <input type="email" placeholder="Novo e-mail"
               value={newEmail} onChange={e => setNewEmail(e.target.value)}
-              className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+              className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             <button onClick={changeEmail} disabled={busy}
               className="w-full py-2.5 rounded-lg border border-cyan-500/40 text-cyan-300 text-sm disabled:opacity-50">
               {busy ? "Enviando..." : "Atualizar e-mail"}
@@ -2572,7 +2572,7 @@ function AddressesModal({ onClose, showToast }: { onClose: () => void; showToast
   if (editing) {
     return (
       <ModalShell onClose={onClose}>
-        <div className="flex items-center justify-between p-4 border-b border-cyan-500/10 sticky top-0 bg-[#0f1d32] z-10">
+        <div className="flex items-center justify-between p-4 border-b border-cyan-500/10 sticky top-0 bg-[#FFE600] z-10">
           <button onClick={() => setEditing(null)} className="text-cyan-400 text-sm">‹ Voltar</button>
           <h3 className="font-bold text-base flex items-center gap-2"><MapPin size={18} className="text-cyan-400" /> Endereço</h3>
           <button onClick={onClose} className="w-8 h-8 rounded-full bg-black/40 flex items-center justify-center"><X size={16} /></button>
@@ -2581,58 +2581,58 @@ function AddressesModal({ onClose, showToast }: { onClose: () => void; showToast
           <div>
             <label className="text-xs text-slate-400 mb-1 block">Identificação (ex: Casa, Trabalho)</label>
             <input value={editing.label} onChange={e => setEditing({ ...editing, label: e.target.value })}
-              className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+              className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <div className="col-span-2">
               <label className="text-xs text-slate-400 mb-1 block">Destinatário</label>
               <input value={editing.recipient} onChange={e => setEditing({ ...editing, recipient: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">Telefone</label>
               <input value={editing.phone} onChange={e => setEditing({ ...editing, phone: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">CEP</label>
               <input value={editing.zip} onChange={e => setEditing({ ...editing, zip: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div className="col-span-2">
               <label className="text-xs text-slate-400 mb-1 block">Rua / Avenida</label>
               <input value={editing.street} onChange={e => setEditing({ ...editing, street: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">Número</label>
               <input value={editing.number} onChange={e => setEditing({ ...editing, number: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">Complemento</label>
               <input value={editing.complement} onChange={e => setEditing({ ...editing, complement: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div className="col-span-2">
               <label className="text-xs text-slate-400 mb-1 block">Bairro</label>
               <input value={editing.neighborhood} onChange={e => setEditing({ ...editing, neighborhood: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">Cidade</label>
               <input value={editing.city} onChange={e => setEditing({ ...editing, city: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div>
               <label className="text-xs text-slate-400 mb-1 block">UF</label>
               <input maxLength={2} value={editing.state} onChange={e => setEditing({ ...editing, state: e.target.value.toUpperCase() })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
             <div className="col-span-2">
               <label className="text-xs text-slate-400 mb-1 block">Ponto de referência</label>
               <input value={editing.reference} onChange={e => setEditing({ ...editing, reference: e.target.value })}
-                className="w-full bg-[#162340] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
+                className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg p-2.5 text-sm" />
             </div>
           </div>
           <label className="flex items-center gap-2 text-sm">
@@ -2641,7 +2641,7 @@ function AddressesModal({ onClose, showToast }: { onClose: () => void; showToast
             Usar como endereço padrão
           </label>
           <button onClick={() => saveAddress(editing)}
-            className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-sm">
+            className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-sm">
             Salvar endereço
           </button>
         </div>
@@ -2657,7 +2657,7 @@ function AddressesModal({ onClose, showToast }: { onClose: () => void; showToast
           <p className="text-sm text-slate-400 text-center py-6">Você ainda não cadastrou nenhum endereço.</p>
         )}
         {list.map(a => (
-          <div key={a.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3">
+          <div key={a.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3">
             <div className="flex items-start gap-2 mb-2">
               <MapPin size={16} className="text-cyan-400 mt-0.5 shrink-0" />
               <div className="flex-1 min-w-0">
@@ -2680,7 +2680,7 @@ function AddressesModal({ onClose, showToast }: { onClose: () => void; showToast
           </div>
         ))}
         <button onClick={() => setEditing(emptyAddress())}
-          className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#0a1628] font-semibold text-sm flex items-center justify-center gap-2">
+          className="w-full py-2.5 rounded-lg bg-cyan-500 text-[#FFE600] font-semibold text-sm flex items-center justify-center gap-2">
           <Plus size={16} /> Adicionar novo endereço
         </button>
       </div>
@@ -2771,7 +2771,7 @@ function DeleteAccountModal({ user, onClose }: { user: UserData; onClose: () => 
         </label>
         <input value={confirmText} onChange={e => setConfirmText(e.target.value)}
           placeholder="EXCLUIR"
-          className="w-full bg-[#162340] border border-red-500/30 rounded-lg p-2.5 text-sm" />
+          className="w-full bg-[#FFE600] border border-red-500/30 rounded-lg p-2.5 text-sm" />
         {err && <p className="text-xs text-red-400">{err}</p>}
         <div className="flex gap-2 pt-2">
           <button onClick={onClose} className="flex-1 py-2.5 rounded-lg border border-cyan-500/30 text-cyan-200 text-sm">
@@ -2789,7 +2789,7 @@ function DeleteAccountModal({ user, onClose }: { user: UserData; onClose: () => 
 
 function Stat({ label, val, color }: { label: string; val: string; color: string }) {
   return (
-    <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 text-center">
+    <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 text-center">
       <p className="text-base font-bold" style={{ color }}>{val}</p>
       <p className="text-xs text-slate-400">{label}</p>
     </div>
@@ -2823,7 +2823,7 @@ function AdminPanel(props: {
           { k: "settings", label: "Config.", icon: Edit },
         ].map(b => (
           <button key={b.k} onClick={() => setSection(b.k as any)}
-            className={`p-2 rounded-xl text-center border ${section === b.k ? "bg-blue-600 border-blue-600 text-white" : "bg-[#162340] border-cyan-500/10 text-slate-300"}`}>
+            className={`p-2 rounded-xl text-center border ${section === b.k ? "bg-blue-600 border-blue-600 text-white" : "bg-[#FFE600] border-cyan-500/10 text-slate-300"}`}>
             <b.icon size={18} className="mx-auto mb-1" />
             <span className="text-[10px]">{b.label}</span>
           </button>
@@ -2870,7 +2870,7 @@ function SettingsAdmin({ settings, setSettings, showToast }: {
     { k: "minOrder", label: "Pedido mínimo atacado (R$) — aplicado a lojistas", type: "number" },
   ];
   return (
-    <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4 space-y-3">
+    <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4 space-y-3">
       <p className="font-semibold text-cyan-400">Configurações da loja</p>
       {fields.map(f => (
         <div key={f.k}>
@@ -2879,7 +2879,7 @@ function SettingsAdmin({ settings, setSettings, showToast }: {
             type={f.type || "text"}
             value={String(form[f.k] ?? "")}
             onChange={e => upd(f.k, (f.type === "number" ? Number(e.target.value) : e.target.value) as any)}
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400"
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400"
           />
         </div>
       ))}
@@ -2938,22 +2938,22 @@ function ProductsAdmin({ products, setProducts, editing, setEditing, showToast }
 
   return (
     <div className="space-y-4">
-      <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4">
+      <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4">
         <p className="font-semibold mb-3 text-cyan-400">{editing ? "Editar produto" : "Novo produto"}</p>
         <div className="space-y-2">
           <input value={form.name} onChange={e => setForm({ ...form, name: e.target.value })}
-            placeholder="Nome do produto" className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+            placeholder="Nome do produto" className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
           <div className="grid grid-cols-2 gap-2">
             <input type="number" step="0.01" value={form.price || ""} onChange={e => setForm({ ...form, price: parseFloat(e.target.value) || 0 })}
-              placeholder="Preço" className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+              placeholder="Preço" className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
             <input type="number" step="0.01" value={form.oldPrice || ""} onChange={e => setForm({ ...form, oldPrice: parseFloat(e.target.value) || undefined })}
-              placeholder="Preço antigo (opcional)" className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+              placeholder="Preço antigo (opcional)" className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
           </div>
           <div className="grid grid-cols-2 gap-2">
             <select
               value={form.category}
               onChange={e => setForm({ ...form, category: e.target.value, subcategory: "" })}
-              className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
+              className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400">
               <option value="">Selecione a categoria</option>
               {ALL_CATEGORIES.map(c => <option key={c} value={c}>{c}</option>)}
             </select>
@@ -2961,15 +2961,15 @@ function ProductsAdmin({ products, setProducts, editing, setEditing, showToast }
               value={form.subcategory || ""}
               onChange={e => setForm({ ...form, subcategory: e.target.value })}
               disabled={!form.category || !CATEGORIES_TREE[form.category]}
-              className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400 disabled:opacity-50">
+              className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm text-white focus:outline-none focus:border-cyan-400 disabled:opacity-50">
               <option value="">Subcategoria</option>
               {(CATEGORIES_TREE[form.category] || []).map(s => <option key={s} value={s}>{s}</option>)}
             </select>
           </div>
           <input type="number" value={form.stock || ""} onChange={e => setForm({ ...form, stock: parseInt(e.target.value) || 0 })}
-            placeholder="Estoque" className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+            placeholder="Estoque" className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
           <textarea value={form.description || ""} onChange={e => setForm({ ...form, description: e.target.value })}
-            placeholder="Descrição" rows={2} className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+            placeholder="Descrição" rows={2} className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
 
           <input ref={fileRef} type="file" accept="image/*" hidden onChange={handleFile} />
           <button onClick={() => fileRef.current?.click()}
@@ -3001,13 +3001,13 @@ function ProductsAdmin({ products, setProducts, editing, setEditing, showToast }
           <Search size={14} className="absolute left-2.5 top-1/2 -translate-y-1/2 text-slate-400" />
           <input value={adminSearch} onChange={e => setAdminSearch(e.target.value)}
             placeholder="Pesquisar produto por nome, categoria..."
-            className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg pl-8 pr-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-400" />
+            className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg pl-8 pr-3 py-2 text-sm placeholder:text-slate-500 focus:outline-none focus:border-cyan-400" />
         </div>
         {visibleProducts.length === 0 && (
           <p className="text-xs text-slate-400 text-center py-4">Nenhum produto encontrado para "{adminSearch}".</p>
         )}
         {visibleProducts.map(p => (
-          <div key={p.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 flex gap-3 items-center">
+          <div key={p.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 flex gap-3 items-center">
             <img src={p.image} alt="" className="w-14 h-14 rounded-lg object-cover" />
             <div className="flex-1 min-w-0">
               <p className="text-sm font-semibold truncate">{p.name}</p>
@@ -3035,9 +3035,9 @@ function BannersAdmin({ banners, setBanners, showToast }: { banners: Banner[]; s
 
   return (
     <div className="space-y-3">
-      <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4 space-y-2">
-        <input value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} placeholder="Título" className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
-        <input value={form.subtitle} onChange={e => setForm({ ...form, subtitle: e.target.value })} placeholder="Subtítulo" className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+      <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4 space-y-2">
+        <input value={form.title} onChange={e => setForm({ ...form, title: e.target.value })} placeholder="Título" className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+        <input value={form.subtitle} onChange={e => setForm({ ...form, subtitle: e.target.value })} placeholder="Subtítulo" className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
         <input ref={fileRef} type="file" accept="image/*" hidden onChange={handleFile} />
         <button onClick={() => fileRef.current?.click()} className="w-full py-2.5 rounded-lg border-2 border-dashed border-cyan-500/40 text-sm flex items-center justify-center gap-2">
           <Upload size={16} /> {form.image ? "Trocar imagem" : "Enviar imagem"}
@@ -3052,7 +3052,7 @@ function BannersAdmin({ banners, setBanners, showToast }: { banners: Banner[]; s
         </button>
       </div>
       {banners.map(b => (
-        <div key={b.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 flex gap-3 items-center">
+        <div key={b.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 flex gap-3 items-center">
           <img src={b.image} alt="" className="w-16 h-12 rounded object-cover" />
           <div className="flex-1 min-w-0">
             <p className="text-sm font-semibold truncate">{b.title}</p>
@@ -3070,11 +3070,11 @@ function CouponsAdmin({ coupons, setCoupons, showToast }: { coupons: Coupon[]; s
 
   return (
     <div className="space-y-3">
-      <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4 space-y-2">
-        <input value={code} onChange={e => setCode(e.target.value.toUpperCase())} placeholder="Código (ex: NATAL15)" className="w-full bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+      <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4 space-y-2">
+        <input value={code} onChange={e => setCode(e.target.value.toUpperCase())} placeholder="Código (ex: NATAL15)" className="w-full bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
         <div className="grid grid-cols-2 gap-2">
-          <input type="number" value={disc} onChange={e => setDisc(e.target.value)} placeholder="Desconto" className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
-          <select value={type} onChange={e => setType(e.target.value as any)} className="bg-[#0f1d32] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400">
+          <input type="number" value={disc} onChange={e => setDisc(e.target.value)} placeholder="Desconto" className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400" />
+          <select value={type} onChange={e => setType(e.target.value as any)} className="bg-[#FFE600] border border-cyan-500/20 rounded-lg px-3 py-2 text-sm focus:outline-none focus:border-cyan-400">
             <option value="percent">% Percentual</option>
             <option value="fixed">R$ Fixo</option>
           </select>
@@ -3090,7 +3090,7 @@ function CouponsAdmin({ coupons, setCoupons, showToast }: { coupons: Coupon[]; s
         </button>
       </div>
       {coupons.map(c => (
-        <div key={c.code} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 flex items-center gap-3">
+        <div key={c.code} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 flex items-center gap-3">
           <Tag size={18} className="text-cyan-400" />
           <div className="flex-1">
             <p className="font-bold text-sm">{c.code}</p>
@@ -3109,7 +3109,7 @@ function OrdersAdmin({ orders, setOrders }: { orders: Order[]; setOrders: (o: Or
   return (
     <div className="space-y-3">
       {orders.map(o => (
-        <div key={o.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4">
+        <div key={o.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4">
           <div className="flex justify-between items-start mb-2">
             <div>
               <p className="text-xs text-slate-400">#{o.id.toUpperCase()}</p>
@@ -3147,13 +3147,13 @@ function CopyCodeModal({ onClose, showToast }: { onClose: () => void; showToast:
 
   return (
     <div className="fixed inset-0 z-[1100] bg-black/70 flex items-center justify-center p-4" onClick={onClose}>
-      <div className="bg-[#0f1d32] rounded-2xl max-w-md w-full p-6" onClick={e => e.stopPropagation()}>
+      <div className="bg-[#FFE600] rounded-2xl max-w-md w-full p-6" onClick={e => e.stopPropagation()}>
         <div className="flex items-center justify-between mb-4">
           <h3 className="font-bold text-lg flex items-center gap-2"><Copy size={20} className="text-cyan-400" /> Compartilhar o site</h3>
           <button onClick={onClose} className="p-1"><X size={20} /></button>
         </div>
         <p className="text-sm text-slate-300 mb-3">Copie o link abaixo para compartilhar o site:</p>
-        <div className="bg-[#0a1628] border border-cyan-500/20 rounded-lg p-3 break-all text-xs text-cyan-300 font-mono mb-3">
+        <div className="bg-[#FFE600] border border-cyan-500/20 rounded-lg p-3 break-all text-xs text-cyan-300 font-mono mb-3">
           {url}
         </div>
         <button onClick={copy}
@@ -3184,7 +3184,7 @@ function FavoritesTab({ user, products, onOpen, onToggle }: {
       ) : (
         <div className="grid grid-cols-2 gap-3">
           {favs.map(p => (
-            <div key={p.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl overflow-hidden">
+            <div key={p.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl overflow-hidden">
               <button onClick={() => onOpen(p)} className="block w-full">
                 <img src={p.image} alt={p.name} className="w-full aspect-square object-cover" />
               </button>
@@ -3235,7 +3235,7 @@ function NotificationsTab({ items, onMarkRead, onMarkAll }: {
         <div className="space-y-2">
           {items.map(n => (
             <button key={n.id} onClick={() => !n.read && onMarkRead(n.id)}
-              className={`w-full text-left rounded-xl p-3 border flex gap-3 ${n.read ? "bg-[#0f1d32] border-cyan-500/10 opacity-70" : "bg-[#162340] border-cyan-500/30"}`}>
+              className={`w-full text-left rounded-xl p-3 border flex gap-3 ${n.read ? "bg-[#FFE600] border-cyan-500/10 opacity-70" : "bg-[#FFE600] border-cyan-500/30"}`}>
               <div className="shrink-0 mt-0.5">{iconFor(n.kind)}</div>
               <div className="flex-1 min-w-0">
                 <p className="text-sm font-semibold">{n.title}</p>
@@ -3297,7 +3297,7 @@ function CashbackTab({ data, onGoCart }: {
                 : c.status === "expired" ? "Expirado"
                 : "Transferido";
               return (
-                <div key={c.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3">
+                <div key={c.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3">
                   <div className="flex justify-between items-center">
                     <div>
                       <p className="text-sm font-bold text-white">{brl(remaining > 0 ? remaining : Number(c.amount))}</p>
@@ -3334,7 +3334,7 @@ function CashbackAdmin({ showToast }: { showToast: (m: string) => void }) {
 
   return (
     <div className="space-y-3">
-      <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4">
+      <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4">
         <div className="flex items-center justify-between mb-3">
           <p className="font-semibold text-cyan-400 flex items-center gap-2"><Gift size={16} /> Relatório de Cashback</p>
           <button onClick={load} disabled={loading} className="text-xs px-3 py-1.5 rounded bg-blue-600 text-white disabled:opacity-50">
@@ -3371,7 +3371,7 @@ function CashbackAdmin({ showToast }: { showToast: (m: string) => void }) {
         <p className="text-sm font-semibold text-cyan-300 mb-2">Últimos créditos</p>
         <div className="space-y-2 max-h-96 overflow-y-auto">
           {report?.credits.slice(0, 50).map(c => (
-            <div key={c.id} className="bg-[#162340] border border-cyan-500/10 rounded-xl p-3 text-xs">
+            <div key={c.id} className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-3 text-xs">
               <div className="flex justify-between">
                 <span className="text-white font-bold">{brl(Number(c.amount))}</span>
                 <span className="text-slate-400">{c.status}</span>
@@ -3427,10 +3427,10 @@ function LojasParceirasStrip() {
       </div>
       <div className="flex gap-3 overflow-x-auto pb-2">
         {partners.map((p) => (
-          <Link key={p.id} to="/loja/$slug" params={{ slug: p.slug }} className="shrink-0 w-32 rounded-lg bg-[#0f1d32] border border-cyan-500/20 overflow-hidden hover:border-cyan-400">
+          <Link key={p.id} to="/loja/$slug" params={{ slug: p.slug }} className="shrink-0 w-32 rounded-lg bg-[#FFE600] border border-cyan-500/20 overflow-hidden hover:border-cyan-400">
             <div className="h-16 bg-cyan-500/10" style={p.banner_url ? { backgroundImage: `url(${p.banner_url})`, backgroundSize: "cover", backgroundPosition: "center" } : {}} />
             <div className="p-2 flex items-center gap-2">
-              <div className="h-8 w-8 rounded-full bg-[#162340] overflow-hidden shrink-0">
+              <div className="h-8 w-8 rounded-full bg-[#FFE600] overflow-hidden shrink-0">
                 {p.logo_url && <img src={p.logo_url} alt={p.nome_loja} className="h-full w-full object-cover" />}
               </div>
               <span className="text-[11px] font-semibold text-slate-100 line-clamp-2">{p.nome_loja}</span>
@@ -3462,7 +3462,7 @@ function RemoteOrderCard({ order }: { order: any }) {
   if (step >= 1) dates[1] = order.paid_at ?? (step === 1 ? order.updated_at : null);
   if (step >= 2) dates[step] = order.updated_at ?? null;
   return (
-    <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4">
+    <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4">
       <div className="flex justify-between items-start mb-2">
         <div>
           <p className="text-xs text-slate-400">#{String(order.id).slice(0, 8).toUpperCase()}</p>
@@ -3511,7 +3511,7 @@ function LocalOrderCard({ order }: { order: Order }) {
     h.delivered ?? null,
   ];
   return (
-    <div className="bg-[#162340] border border-cyan-500/10 rounded-xl p-4">
+    <div className="bg-[#FFE600] border border-cyan-500/10 rounded-xl p-4">
       <div className="flex justify-between items-start mb-2">
         <div>
           <p className="text-xs text-slate-400">#{order.id.toUpperCase()}</p>
