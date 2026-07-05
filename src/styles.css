@@ -137,14 +137,14 @@
 /* ===== Premium brand tokens (Modern Premium direction) ===== */
 :root {
   --brand: oklch(0.63 0.18 255);            /* ML blue */
-  --brand-glow: oklch(0.93 0.19 105);       /* ML yellow */
-  --brand-deep: oklch(0.5 0.2 260);
-  --accent-warm: oklch(0.93 0.19 105);
+  --brand-glow: oklch(0.75 0.15 250);       /* light blue */
+  --brand-deep: oklch(0.4 0.18 260);
+  --accent-warm: oklch(0.63 0.18 255);
   --surface: oklch(1 0 0);
   --surface-elevated: oklch(1 0 0);
   --gradient-primary: linear-gradient(135deg, #3483FA, #2968c8);
-  --gradient-hero: linear-gradient(135deg, #FFE600 0%, #FFF159 100%);
-  --gradient-warm: linear-gradient(135deg, #FFE600, #FFB800);
+  --gradient-hero: linear-gradient(135deg, #3483FA 0%, #2968c8 100%);
+  --gradient-warm: linear-gradient(135deg, #3483FA, #1e5bb8);
   --shadow-elegant: 0 4px 14px -6px rgba(0,0,0,0.15);
   --shadow-glow: 0 0 24px rgba(52,131,250,0.25);
   --shadow-card: 0 1px 2px rgba(0,0,0,0.08), 0 1px 4px rgba(0,0,0,0.04);
