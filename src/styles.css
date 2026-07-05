@@ -174,11 +174,11 @@
   color: transparent;
 }
 @utility card-premium {
-  background: linear-gradient(180deg, oklch(0.21 0.05 261), oklch(0.18 0.04 260));
-  border: 1px solid color-mix(in oklab, oklch(0.82 0.13 200) 18%, transparent);
-  border-radius: 1rem;
+  background: #ffffff;
+  border: 1px solid #e6e6e6;
+  border-radius: 0.5rem;
   box-shadow: var(--shadow-card);
-  transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease;
+  transition: transform .2s ease, box-shadow .2s ease;
 }
 @utility btn-premium {
   background-image: var(--gradient-primary);
